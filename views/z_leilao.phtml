@@ -1,0 +1,209 @@
+<?
+	if($_GET['pg'] == 'home'){
+		$mysql->colunas = 'id, nome, foto, leiloes';
+		$mysql->filtro = " WHERE ".STATUS." AND leiloes = '".$value->id."' ORDER BY estados asc, ".ORDER." ";
+		$lotes = $mysql->read('lotes');
+
+		// 1 Lote
+		if(count($lotes) == 1 AND isset($lotes[0]->id)){
+			$value = $lotes[0];
+		}
+	}
+
+	// comitentes
+		if(isset($value->comitentes)){
+			$ex_comitentes = ex($value->comitentes);
+		} else {
+			$leiloes_comitentes = rel('leiloes', $value->leiloes, 'comitentes');
+			$ex_comitentes = ex($leiloes_comitentes);
+		}
+
+		$mysql->colunas = 'id, nome, foto';
+		$mysql->filtro = " WHERE ".STATUS." AND id IN (".implode(',', $ex_comitentes).") ";
+		$comitentes_foto = $mysql->read_unico('comitentes');
+	// comitentes
+
+	$css_nome = 'cor_fff';
+	$css_back = 'border:1px solid #ccc; '.degrade('#'.LARANJA.'', '#'.LARANJA.'');
+	if(isset($leiloes_e_lotes_home) AND $leiloes_e_lotes_home){
+		$css_nome = 'cor_fff';
+		$css_back = 'border:1px solid #3465F9; '.degrade('#'.LARANJA.'', '#'.LARANJA2.'');
+	}
+
+	// Link
+	$link = url('lote', $value);
+	if($_GET['pg']=='home' AND preg_match('(leilao_)', $tipo_box)){
+		$link = url('lotes', $value);
+	}
+        
+        if($_GET['pg'] != 'home'){
+            
+            $loteCod = 'Lote:'.$value->ordem;
+            
+        }
+        
+        
+        
+        
+?>
+
+	<a href="<?=$link?>" class="posr db" style="max-width: 310px;min-height: 490px;margin: 20px auto;">
+
+		<div class="carregando_lote"> <img src="<?=DIR?>/web/img/outros/carregando/loader.gif" class="dib w32 h32"> <span> <span class="porcentagem m0 p0"></span> <?=lang('Carregando')?>... </span> </div>
+
+		<div class="">
+			<div class="wf6 p10 pr2 fz12 ttu texto_preto">
+				<div class="p8 pl10 pr10 limit LL_natureza texto_centralizado borda_arredondada"></div>
+			</div>
+			<div class="wf6 p10 pl2 fz12 ttu tar texto_preto">
+				<div class="p8 pl10 pr10 texto_preto limit LL_tipos texto_italico"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+
+		<div>
+			<div class="posr pl10 pr10">
+				<? if(isset($comitentes_foto->foto) AND $comitentes_foto->foto){ ?>
+					<div class="posa t5 r15 z1 bd_ccc back_fff">
+						<? $img->tags = ' class="db w100p m-a" ' ?>
+						<?=$img->img($comitentes_foto, 70, 70)?>
+					</div>
+				<? } ?>
+				<div class="posr h200 c_flex jc back_fff">
+					<? $img->tags = ' class="db w100p m-a" ' ?>
+					<?=$img->img($value, 300, 200)?>
+
+				</div>
+
+                <div style="" class="w100p">
+                    <div class="">
+                        <ul class="LL_situacao p5 fz11 texto_branco">
+                            <li class="tac"><p></p></li>
+                            <li class="pr5 tac" style="display:none;">
+                                <div class="dib" title="Visualização"><div class="dib w15"><i class="fa fa-eye"></i></div></i> <span class="LL_count"></span></div> &nbsp;
+                                <div class="dib" title="Lances" class="pt2"><div class="dib w15"><i class="fa fa-gavel"></i></div> <span class="LL_count_lances"></span></div>
+                            </li>
+                            <li class="clear"></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="z1 b0 l0 w100p">
+                    <div style="display: inline-block;min-height:30px;">
+                        <div class="dn p5 fz11 texto_preto LL_praca1">
+                            <span class="dib texto_negrito">1ª <?=lang('Praça')?></span>:
+                            <div class="dib LL_data_ini"><data class="dib"></data> <?=lang('às')?> <hora class="dib"></hora></div>
+                        </div>
+                        <div class="dn p5 fz11 texto_preto LL_praca2">
+                            <span class="dib texto_negrito">2ª <?=lang('Praça')?></span>: <div class="dib dataini"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+				
+				
+				
+			</div>
+
+			<ul class="p10">
+                     <li><div style="color:#fff; font-size: 16px;" ><?=$loteCod?></div></li>
+                     <li class="limit fz16  texto_preto LL_nome" style="min-height:20px;font-weight:bold;"><?=$value->nome?></li>
+                     <li class="pt10 icone_caracteristicas">
+                         <div>
+                               <span class="icone_quarto" title="Quartos"></span>
+                               <span class="quartos"> dormitorios </span>
+                         </div>
+
+                         <div>
+                               <span class="icone_suite" title="Suítes"></span>
+                               <span class="suites"> suites </span>
+                         </div>
+
+                         <div>
+                               <span class="icone_vaga" title="Vagas"></span>
+                               <span class="vagas"> vagas </span>
+                         </div>
+
+                         <div>
+                              <span class="icone_area" title="Área"></span>
+                              <span class="area_privativa"> area privativa m²</span>
+                         </div>
+                   </li>
+            </ul>
+
+			<ul class="p5 back_fff">
+
+                <li class="texto_preto fz11">
+                    <ul class="wr12">
+                    <? if($value->situacao <> 3 and $value->situacao <> 2):?>
+
+                        <div class="wr12 pl10 bdt_F0F0F0">
+
+
+                            <div class="pt15 dn LL_lance_ini">
+                                <div class="fwb"><?=lang('Lance inicial')?>:<b class="fz16 pl5 texto_roxo"></b></div>
+                            </div>
+
+                            <div class="pt15 dn LL_lance_atual">
+                                <div class="fwb"><?=lang('Lance atual')?>:<b class="fz16 pl5 texto_roxo"></b></div>
+                            </div>
+
+                            <div class="pt15 dn LL_count_lotes">
+                                <div class="fwb"><?=lang('Número de lotes')?>: <b class="fz16 pl5 texto_roxo"></b></div>
+                            </div>
+                        </div>
+
+                    <? endif; ?>
+                    </ul>
+                </li>
+
+				<li class="texto_preto fz11">
+					
+					<? if($value->situacao == 3 or $value->situacao == 2):?>
+
+			        <ul class="wr12">
+					
+					
+					<? else: ?>
+
+					<ul class="wr7">
+					
+					<? endif; ?>
+					
+						<li class="pt10 pb1">
+							<div class="dib w14"><i class="icone_bandeira"></i></div>
+                            <div class="dib LL_codigo pl10"><?=$value->id?></div>
+                                                        
+						</li>
+						<li class="pt10 pb1">
+							<div class="dib w14 pr5 tac"><i class="icone_local"></i></div>
+							<div class="dib LL_local" style="padding:0 0 0 10px;margin-top:-20px;"><?=$value->cidades?> / <?=$value->estados?></div>
+						</li>
+						<li class="pt10 LL_data_ini" style="display:none;">
+							<div class="dib w12"><i class="icone_calendario"></i></div>
+							<div class="dib vam pl10 texto_negrito"><?=lang('Início')?>:</div>
+							<data class="dib"  ><?=$value->data_ini?> </data>
+						</li>
+						<li class="pt10 LL_data_fim" style="display:none;">
+							<div class="dib w12"><i class="icone_calendario"></i></div>
+							<div class="dib vam pl10 texto_negrito"><?=lang('Término')?>:</div>
+							<data class="dib"  ><?=$value->data_fim?> </data>
+						</li>
+                        <li class="pt10 LL_fase_da_obra">
+                            <div class="dib vam pl10 texto_negrito">Fase da obra:</div>
+                            <div class="dib fase_da_obra"> </div>
+                        </li>
+					</ul>
+					
+
+
+					<div class="clear"></div>					
+				</li>
+			</ul>
+
+		</div>
+	</a>
+	

@@ -1,0 +1,397 @@
+
+	<? if($_GET['pg'] != 'imprimir'){ ?>
+	<header>
+		
+		<style>
+
+
+
+
+.lotes_list_galeria  img{
+	  object-fit: cover;
+}
+</style> 		
+		<div class="back_<?=LARANJA?>">
+			<div class="centerr topo_01">
+
+                <div class="dib div_header div_resp">
+                    <ul class="menu_resp dn" click="true" cor="fff" bd="<?=LARANJA?>" back="<?=LARANJA?>"></ul>
+                </div>
+
+                <div class="dib div_header div_logo">
+                    <a href="<?=DIR?>/home/"><img src="<?=DIR?>/web/img/z_leilao/logo.png" class="max-w270"></a>
+                </div>
+
+
+                <div class="dib flr div_header div_resp_busca">
+                    <!-- <ul class="busca_resp dn" click="true" cor="fff" bd="<?=LARANJA?>" back="<?=LARANJA?>"></ul> -->
+                    <a class="selectBuscaTopo flr fz20 pt8 pb10 pl10 pr10 ml10 mr10 cor_fff bdw3 bd_652c88 back_652c88"><i class="fa fa-search"></i></a>
+                </div>
+
+                <div  id="busca_topo" class="dib div_header div_busca_topo">
+                       <!--
+                        <form method="get" action="<?=DIR?>/busca_leiloes/" class="posr pt5">
+                            <input type="search" name="busca" class="design w100p pr25 fz14" <?=isset($_GET['busca']) ? ' value="'.$_GET['busca'].'" ' : ' placeholder="'.lang('O que você procura? ').'" ';?>  />
+                            <button class="posa t14 r10 fz16 cor_<?=LARANJA?> bd0 back0"><i class="fa fa-search"></i></button>
+                            <div class="clear"></div>
+                        </form>
+                        -->
+                </div>
+
+
+                <div class="dib div_header div_menu">
+
+                    <ul class="fll fwb" hover="true">
+
+                        <? if(isset($_SESSION['x_site']->id)){ ?>
+                            <li class="fll p15 pl20 pr20"><a class="cor_fff"><div class=""><?=lang('Olá')?>, <?=$cadastro_pd->login?>!</div></a>
+                                <ul class="posa z4 dn mt15 ml-10 bd_ccc br2 back_F0F0F0">
+                                    <li class="posa mt-10 ml10" style="border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid #F0F0F0;"></li>
+                                    <li class="pt10 p12 pl30 pr30 fwn bdb_ccc"><a href="<?=DIR?>/minha_conta/dados/"><?=lang('Meu Cadastro')?></a></li>
+                                    <li class="pt10 p12 pl30 pr30 fwn bdb_ccc"><a href="<?=DIR?>/minha_conta/documentos/"><?=lang('Meus Documentos')?></a></li>
+                                    <li class="pt10 p12 pl30 pr30 fwn bdb_ccc"><a href="<?=DIR?>/minha_conta/habilitacoes/"><?=lang('Minhas Habilitações')?></a></li>
+                                    <li class="pt10 p12 pl30 pr30 fwn bdb_ccc"><a href="<?=DIR?>/minha_conta/meus_lances/"><?=lang('Meus Lances')?></a></li>
+                                    <li class="pt10 p12 pl30 pr30 fwn bdb_ccc"><a href="<?=DIR?>/minha_conta/lotes_arrematados/"><?=lang('Meus Lotes')?></a></li>
+                                    <li class="pt10 p12 pl30 pr30 fwn bdb_ccc"><a onclick="ajaxNormal('ajaxForm/login.php?sair=1');"><?=lang('Sair')?></a></li>
+                                </ul>
+                            </li>
+                        <? } ?>
+                        <li class="clear"></li>
+                    </ul>
+
+                    <ul class="fll fwb menu" hover="true">
+
+                        <? if(!isset($_SESSION['x_site']->id)){ ?>
+                            <li class="fll p15 pl20 pr20"><a href="<?=DIR?>/login/" class="cor_fff icone_perfil pl30"><?=lang('Faça seu login')?></a></li>
+                            <li class="fll p15 pl20 pr20"><a href="<?=DIR?>/cadastro/" class="cor_fff"><?=lang('Cadastre-se')?></a></li>
+                        <? } ?>
+
+                        <li class="fll p15 pl20 pr20">
+                            <a href="<?=url_txt(2)?>" class="cor_fff"><?=lang('Quem Somos')?></a>
+                            <ul class="dn posa z1 tal bd_F2F2F2">
+                                <? foreach ($paginas as $key => $value) { ?>
+                                    <li><a href="<?=url('textosp', $value)?>" class="db p10 pl20 pr20 bdb_F2F2F2 back_fff cor_hover_fff back_hover_<?=LARANJA?>"> <span class="dib_700">&nbsp; </span> <i class="fa fa-caret-right"></i> <?=$value->nome?></a></li>
+                                <? } ?>
+                            </ul>
+                        </li>
+                        <li class="fll p15 pl20 pr20"><a href="<?=DIR?>/faq/" class="cor_fff"><?=lang('Faq')?></a></li>
+                        <li class="fll p15 pl20 pr20"><a href="<?=DIR?>/fale/" class="cor_fff"><?=lang('Fale Conosco')?></a></li>
+                    </ul>
+
+                </div>
+
+				<? if(!isset($_SESSION['x_site']->id)){ ?>
+					<!-- Caso não esteja logado - Diogo - 19/06/2019 -->
+				<? } ?>
+
+				<div class="clear"></div>
+
+			</div>
+		</div>
+
+
+		<? if($_GET['pg']=='home'){ ?>
+			<div class="">
+				<div class="Plugin1 pagg1 Plugin_CSS_fundo_vermelho" itens="1" auto="10" altura_flexcivel="1">
+			    	<? foreach ($banner[1] as $key => $value) { ?>
+						<a <?=$value->link ? 'href="'.http($value->link).'"' : ''?> class="db">
+							<?=banner($value, auto, auto, ' class="db w100p m-a" ')?>
+						</a>
+		        	<? } ?>
+				</div>
+		        <div class="clear"></div>
+	        </div>
+		<? } ?>
+
+	</header>
+	<? } ?>
+
+
+
+    <? if($_GET['pg']!='busca_leiloes' && $_GET['pg']!='lote' ){ ?>
+    <!-- Início de código para busca -->
+    <style>
+
+        /* Início da estilização checkboxLB */
+
+        form .boxFiltro ul.checkboxLB > li {
+            display: block;
+            width: 100%;
+            float: left;
+            border-bottom: 1px solid #ccc;
+            -moz-transition: all 0.25s ease-in-out;
+            -webkit-transition: all 0.25s ease-in-out;
+            -o-transition: all 0.25s ease-in-out;
+            transition: all 0.25s ease-in-out;
+        }
+
+        form .boxFiltro ul.checkboxLB > li:last-child {
+            border-bottom: none;
+        }
+
+        form .boxFiltro ul.checkboxLB {
+            overflow: auto;
+            list-style: none;
+            display: block;
+            clear: both;
+            margin: 0;
+        }
+
+        form .boxFiltro ul.checkboxLB > li input[type="checkbox"] {
+            display: none;
+        }
+
+        form .boxFiltro ul.checkboxLB > li input[type="checkbox"] + label {
+            padding: 0px 0px 0px 30px;
+            margin: 10px;
+            position: relative;
+            width: calc(100% - 20px);
+            float: none;
+            display: block;
+            cursor: pointer;
+            font-family: 'Ubuntu', sans-serif;
+            line-height: 16px;
+            font-weight: normal;
+            font-size: 14px;
+            color: #696969;
+            line-height: 20px;
+        }
+
+        form .boxFiltro ul.checkboxLB > li input[type="checkbox"] + label:after {
+            line-height: 20px;
+            content: "";
+            width: 18px;
+            height: 18px;
+            display: block;
+            position: absolute;
+            top: 50%;
+            margin-top: -9px;
+            left: 1px;
+            -moz-transition: all 0.25s ease-in-out;
+            -webkit-transition: all 0.25s ease-in-out;
+            -o-transition: all 0.25s ease-in-out;
+            transition: all 0.25s ease-in-out;
+            background: #ffffff;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+        }
+
+        form .boxFiltro ul.checkboxLB > li input[type="checkbox"] + label:hover:after {
+            color: #696969;
+        }
+
+        form .boxFiltro ul.checkboxLB > li input[type="checkbox"]:checked + label:after {
+            background: #6288d9;
+            border: 3px solid #ffffff;
+            -webkit-box-shadow: 0px 0px 0px 1px #cccccc;
+            -moz-box-shadow: 0px 0px 0px 1px #cccccc;
+            box-shadow: 0px 0px 0px 1px #cccccc;
+        }
+
+
+        /* fim da estilização checkboxLB */
+
+        form .boxFiltro {
+            display: block;
+            padding: 10px 20px;
+        }
+
+        form .boxFiltro h4 {
+            color: #fff;
+        }
+
+        form .boxFiltro .boxModal {
+            display: block;
+            position: absolute;
+            background: #f2f2f2;
+            width: 252px;
+            z-index: 11;
+        }
+
+        form .boxFiltro a {
+            color:  #ffffff;
+            display: block;
+            width: 100%;
+            padding: 10px 0;
+            border-bottom: 2px solid #f57e20;
+        }
+
+        form .boxFiltro a i {
+            float: right;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        form .boxFiltro .inputSearch {
+            border-radius: 5px;
+            border: solid 1px #ccc;
+            padding: 0 10px;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        form .boxFiltro .boxLocal {
+            padding: 10px 0;
+        }
+
+        form .boxFiltro .btnBusca {
+            background-color: #f57e20;
+            border: none;
+            color: #fff;
+            border-radius: 2px;
+            padding: 11px;
+            margin: 12px auto;
+        }
+
+
+    </style>
+
+    <script>
+
+        $(document).ready(function() {
+
+            $(".tipo_leilao").hide();
+            $(".tipo_imovel").hide();
+            $(".local").hide();
+
+            $(".boxFiltro h4 ").on("click", function() {
+                $(".tipo_leilao").hide('slow');
+                $(".tipo_imovel").hide('slow');
+                $(".local").hide('slow');
+            });
+
+            $("#principal").on("click", function() {
+                $(".tipo_leilao").hide('slow');
+                $(".tipo_imovel").hide('slow');
+                $(".local").hide('slow');
+            });
+
+            $(".selectBuscaTopo").on("click", function() {
+                $(".busca_topo").toggle('slow');
+            });
+
+            $(".selectLeilao").on("click", function() {
+                $(".tipo_leilao").toggle('slow');
+                $(".tipo_imovel").hide('slow');
+                $(".local").hide('slow');
+            });
+
+            $(".selectImovel").on("click", function() {
+                $(".tipo_imovel").toggle('slow');
+                $(".tipo_leilao").hide('slow');
+                $(".local").hide('slow');
+            });
+
+            $(".selectLocal").on("click", function() {
+                $(".local").toggle('slow');
+                $(".tipo_leilao").hide('slow');
+                $(".tipo_imovel").hide('slow');
+
+            });
+
+            // Autocomplete para localidade
+
+            $("#localidade").autocomplete({
+                source: function( request, response ) {
+                    $.ajax( {
+                        url: "/busca_autocomplete/",
+                        dataType: "json",
+                        data: {
+                            term: request.term
+                        },
+                        success: function( data ) {
+                            response( data );
+                        }
+                    } );
+                },
+                minLength: 1
+            });
+
+            // Fim do Autocomplete para localidade
+
+        });
+
+    </script>
+
+    <div class="back_652c88">
+        <div class="centerr topo_01 busca_topo">
+
+            <form action="/busca_leiloes/" method="get">
+
+                <input type="hidden" name="busca_home" value="1">
+                <input type="hidden" name="ordenacao" value="maior_lance_inicial">
+
+                <div class="boxFiltro wr3">
+                    <h4>SELECIONE SEU INTERESSE</h4>
+                    <a href="javascript:void(0);" class="selectSearch selectLeilao">Tipo do Leilão     <i class="fa fa-angle-down"></i></a>
+                    <div class="boxModal">
+                        <ul class="checkboxLB tipo_leilao">
+                            <li class="optionSelected">
+                                <input name="natureza[]" id="judicial" value="1" type="checkbox">
+                                <label for="judicial">Judicial</label>
+                            </li>
+                            <li class="optionSelected">
+                                <input name="natureza[]" id="extrajudicial" value="2" type="checkbox">
+                                <label for="extrajudicial">Extrajudicial</label>
+                            </li>
+                            <li class="optionSelected">
+                                <input name="natureza[]" id="privado" value="3" type="checkbox">
+                                <label for="privado">Privado</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="boxFiltro wr3">
+                    <h4>QUAL TIPO DO IMÓVEL</h4>
+                    <a href="javascript:void(0);" class="selectSearch selectImovel">Tipo do imóvel     <i class="fa fa-angle-down"></i></a>
+                    <div class="boxModal">
+                        <ul class="checkboxLB tipo_imovel">
+                            <?php
+
+                            $query = 'SELECT id,
+                                             nome                                  
+                                        FROM lotes1_cate                         
+                                    ORDER BY nome';
+
+                            $resultado = $mysql->db->query($query);
+                            $resultado_tipologia = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+                             foreach($resultado_tipologia as $t_imovel){
+                            ?>
+                                <li class="optionSelected">
+                                    <input name="tipologia[]" id="<?php echo $t_imovel['nome']; ?>" value="<?php echo $t_imovel['id']; ?>" type="checkbox">
+                                    <label for="<?php echo $t_imovel['nome']; ?>"><?php echo $t_imovel['nome']; ?></label>
+                                </li>
+                            <?php } ?>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="boxFiltro wr3">
+                    <h4>ONDE ?</h4>
+                    <a href="javascript:void(0);" class="selectSearch selectLocal">Digite cidade ou bairro     <i class="fa fa-angle-down"></i></a>
+
+                    <div class="ui-widget boxLocal">
+                        <input type="text" id="localidade" class="inputSearch w100p local" name="localidade" placeholder="Digite cidade ou bairro..." value="" autocomplete="off">
+                    </div>
+
+                </div>
+
+                <div class="boxFiltro wr3">
+                    <button value="busca_home" type="submit" class="btnBusca">Buscar</button>
+                </div>
+
+            </form>
+
+
+            <div class="clear"></div>
+
+        </div>
+    </div>
+
+    <!-- Fim de código para busca -->
+    <? } ?>

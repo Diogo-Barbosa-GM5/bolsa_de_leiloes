@@ -1,0 +1,47 @@
+
+
+    <div class="m10 tar">
+        <a href="/busca_leiloes/" id="botao_refazer_busca" class="botao dib m4 p10 pl30 pr30 fz14 fwb ttu back_ededed">Refazer Busca</a>
+
+        <? if($leiloes->foto1){ ?>
+            <a href="<?=DIR?>/web/fotos/<?=$leiloes->foto1?>" target="_blank" class="botao dib p10 pl30 pr30 fz14 fwb ttu back_FF8000"><?=lang('VER EDITAL')?></a>
+        <? } ?>
+        <a href="<?=DIR?>/lotes/?natureza[]=<?=$leiloes->natureza?>" class="botao dib m4 p10 pl30 pr30 fz14 fwb ttu back_<?=str_replace('#', '', rel('natureza', $leiloes->natureza, 'cor'))?>"><?=rel('natureza', $leiloes->natureza)?></a>
+        <? if(isset($leiloes_habilitacoes) AND !count($leiloes_habilitacoes)){ ?>
+            <a onclick="habilitar_leilao('<?=$leiloes->id?>','<?=$loteexplode?>')" class="botao dib m4 p10 pl30 pr30 fz14 fwb ttu cor_fff fundo_roxo LL_habilitar_leilao"><?=lang('HABILITAR-SE PARA LEILÃO')?></a>
+        <? } ?>
+
+
+    </div>
+
+	<div class="p20 borda_leiloes">
+		<div class="fll dn_550">
+			<a href="<?=url('lotes', $leiloes)?>">
+                <?
+                $loteexplode = explode('/',$_SERVER['REQUEST_URI']);
+
+
+                $loteexplode = $loteexplode[3];
+                ?>
+
+				<? $img->tags = ' class="db w100p" ' ?>
+				<?=$img->img($leiloes, 150, 100)?>
+			</a>
+		</div>
+		<div class="calc-160 pl160 pt10 fz14 cor_221E1F w100p_550 p0_550">
+			<div class="pb10 fz22 texto_roxo fwb"><?=$leiloes->codigo?> - <?=$leiloes->nome?></div>
+			<ul>
+				<li class="wr6">
+					<div><b>Comitente:</b> <?=comitentes($leiloes->comitentes)?></div>
+					<div class="pt5 pb5"><b><?=lang('Data de início')?>:</b> <?=data($leiloes->data_ini)?> às <?=data($leiloes->data_ini, 'H:i')?></div>
+				</li>
+				<li class="wr6">
+					<div><b>Modalidade:</b> <?=rel('tipos', $leiloes->tipos)?></div>
+					<div class="pt5"><b><?=lang('Data de Término')?>:</b> <?=data($leiloes->data_fim)?> às <?=data($leiloes->data_fim, 'H:i')?></div>
+				</li>
+				<li class="clear"></li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+
+	</div>

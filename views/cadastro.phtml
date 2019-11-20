@@ -1,0 +1,200 @@
+
+	<section id="cadastro">
+
+
+		<div class="h80 remove_edit"></div>
+		<div class="dados w1000 w100p_1000 m-a p20 pl40 pr40 fz16 br10 back_fff">
+			<div class="pb10 mb30 fz24 texto_negrito texto_laranja remove_edit"><?=lang('Faça seu cadastro')?></div>
+
+			<form id="form_cadastro" method="post" action="">
+
+				<? if(isset($_GET['pg'])){ ?>
+					<div class="pb20">
+						<a href="<?=DIR?>/cadastro/" class="dib p10 pl15 pr15 fwb <?=!(isset($_GET['tipo']) AND $_GET['tipo']=='pj') ? 'cor_fff back_'.LARANJA : 'cor_33 back_eee hoverr1'?>"><?=lang('Pessoas Física')?></a>
+						&nbsp; &nbsp; 
+						<a href="<?=DIR?>/cadastro/?tipo=pj" class="dib p10 pl15 pr15 fwb <?=(isset($_GET['tipo']) AND $_GET['tipo']=='pj') ? 'cor_fff back_'.LARANJA : 'cor_33 back_eee hoverr1'?>"><?=lang('Pessoas Jurídica')?></a>
+					</div>
+				<? } ?>
+
+
+				<div class="wr6 pr20 p0_700 mb20">
+					<b class="db pb4"><?=(isset($_GET['tipo']) AND $_GET['tipo']=='pj') ? lang('Razão Social') : lang('Nome')?>*</b>
+					<input type="text" name="nome" class="w100p design fz14" required>
+				</div>
+				<div class="wr6 mb20">
+					<b class="db pb4"><?=lang('Email')?>*</b>
+					<input type="email" name="email" class="w100p design fz14" value="<?=isset($_POST['email']) ? $_POST['email'] : ''?>" required>
+				</div>
+				<div class="clear"></div>
+
+				<? if( (isset($_GET['tipo']) AND $_GET['tipo']=='pj') OR !isset($_GET['pg']) ){ //Pessoa Juridica ?>
+					<div class="tipo_pj">
+						<input type="hidden" name="tipo" value="1">
+
+						<div class="wr6 pr20 p0_700 mb20">
+							<b class="db pb4"><?=lang('CNPJ')?>*</b>
+							<input type="text" name="cnpj" id="cnpj" class="w100p design fz14" required>
+						</div>
+						<div class="wr6 mb20">
+							<b class="db pb4"><?=lang('Inscrição Estadual')?>*</b>
+							<input type="text" name="ie" id="ie" class="w100p design fz14" required>
+						</div>
+					</div>
+				<? } ?>
+
+				<? if( !(isset($_GET['tipo']) AND $_GET['tipo']=='pj') OR !isset($_GET['pg']) ){ //Pessoa Fisica ?>
+					<div class="tipo_pf">
+						<div class="wr6 pr20 p0_700 mb20">
+							<b class="db pb4"><?=lang('CPF')?>*</b>
+							<input type="text" name="cpf" id="cpf" class="w100p design fz14" required>
+						</div>
+						<div class="wr6 mb20">
+							<b class="db pb4"><?=lang('RG')?>*</b>
+							<input type="text" name="rg" class="w100p design fz14" required>
+						</div>
+						<div class="clear"></div>
+
+						<div class="wr6 pr20 p0_700 mb20">
+							<b class="db pb4"><?=lang('Sexo')?>*</b>
+							<select name="sexo" class="w100p design fz14" required>
+								<option value=""><?=lang('Selecione')?>...</option>
+								<option value="0"><?=lang('Feminino')?></option>
+								<option value="1"><?=lang('Masculino')?></option>
+							</select>
+						</div>
+						<div class="wr6 mb20">
+							<b class="db pb4"><?=lang('Data de Nascimento')?>*</b>
+							<div class="wf3 pr10">
+								<select name="dia" id="dia" class="w100p design fz14" required>
+									<option value=""> - - - </option>
+									<? for ($i=1; $i < 32; $i++) { ?>
+										<option value="<?=$i?>"><?=$i?></option>
+									<? } ?>
+								</select>
+							</div>
+							<div class="wf3 pr10">
+								<select name="mes" id="mes" class="w100p design fz14" required>
+									<option value=""> - - - </option>
+									<? for ($i=1; $i < 13; $i++) { ?>
+										<option value="<?=$i?>"><?=lang(mes($i))?></option>
+									<? } ?>
+								</select>
+							</div>
+							<div class="wf4">
+								<select name="ano" id="ano" class="w100p design fz14" required>
+									<option value=""> - - - - - </option>
+									<? for ($i=(date('Y')-9); $i > 1950;) { $i=$i-1; ?>
+										<option value="<?=$i?>"><?=$i?></option>
+									<? } ?>
+								</select>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+				<? } ?>
+				<div class="clear"></div>
+
+
+				<div class="wr6 pr20 p0_700 mb20">
+					<b class="db pb4"><?=lang('Telefone')?>*</b>
+					<input type="tel" name="telefone" class="w100p design fz14" required>
+				</div>
+				<div class="wr6 mb20">
+					<b class="db pb4"><?=lang('Celular')?></b>
+					<input type="tel" name="celular" class="w100p design fz14">
+				</div>
+				<div class="clear"></div>
+
+
+
+
+
+				<div class="wr2 pr20 p0_700 mb20">
+					<b class="db pb4"><?=lang('Cep')?>*</b>
+					<input type="text" name="cep" id="cep" class="w100p design fz14" required onblur="cepp(this)">
+				</div>
+				<div class="wr6 pr20 p0_700 mb20">
+					<b class="db pb4"><?=lang('Endereço')?></b>
+					<input type="text" name="rua" id="rua" class="w100p design fz14" required>
+				</div>
+				<div class="wr2 pr20 p0_700 mb20">
+					<b class="db pb4"><?=lang('Número')?></b>
+					<input type="text" name="numero" id="numero" class="w100p design fz14" required>
+				</div>
+				<div class="wr2 mb20">
+					<b class="db pb4"><?=lang('Complemento')?></b>
+					<input type="text" name="complemento" id="complemento" class="w100p design fz14">
+				</div>
+				<div class="clear"></div>
+
+
+				<div class="wr3 pr20 p0_700 mb20">
+					<b class="db pb4"><?=lang('Bairro')?></b>
+					<input type="text" name="bairro" id="bairro" class="w100p design fz14" required>
+				</div>
+				<div class="wr3 pr20 p0_700 mb20">
+					<b class="db pb4"><?=lang('Cidade')?></b>
+					<input type="text" name="cidades" id="cidades" class="w100p design fz14" required>
+				</div>
+				<div class="wr3 pr20 p0_700 mb20">
+					<b class="db pb4"><?=lang('Estado')?></b>
+					<input type="text" name="estados" id="estados" class="w100p design fz14" required>
+				</div>
+				<div class="wr3 pr20 p0_700 mb20">
+					<b class="db pb4"><?=lang('País')?></b>
+					<input type="text" name="pais" id="pais" class="w100p design fz14" required>
+				</div>
+				<div class="clear"></div>
+
+
+
+				<div class="wr4 pr20 p0_700 mb20">
+					<b class="db pb4"><?=lang('Login')?>*</b>
+					<input type="text" name="login" class="w100p design fz14" required>
+				</div>
+
+				<? if(isset($_GET['pg'])){ ?>
+					<div class="wr4 pr20 p0_700 mb20 remove_edit">
+						<b class="db pb4"><?=lang('Senha')?></b>
+						<input type="password" name="senha" class="w100p design fz14" required>
+					</div>
+					<div class="wr4 mb20 remove_edit">
+						<b class="db pb4"><?=lang('Confirmar a Senha')?></b>
+						<input type="password" name="c_senha" class="w100p design fz14" required>
+					</div>
+				<? } ?>
+				<div class="clear"></div>
+
+
+
+				<div class="wr9 pr20 p0_700 termos_uso">
+					<label>
+						<input type="checkbox" name="termos" value="1" required>
+						<?=lang('Eu aceito os')?> <a href="<?=DIR?>/textos/<?=amg(1)?>/1/" target="_blank" class="link c_azul"><?=lang('Termos de Uso')?></a>.
+					</label>
+				</div>
+				<div class="wr3 tar">
+					<button class="design cor_fff fundo_roxo hover2 hoverr4"><?=lang('Cadastrar')?></button>
+				</div>
+				<div class="clear"></div>
+
+				<? if(isset($_SESSION['indicacao'])){ ?>
+					<div class="remove_edit"><input type="hidden" name="indicacao" value="<?=$_SESSION['indicacao']?>"></div>
+				<? } ?>
+
+				<? if(isset($_GET['nome'])){ ?>
+	                <? $url = $_GET['nome'] ?>
+	                <? $url .= $_GET['id']!='-' ? '/'.$_GET['id'] : ($_GET['categorias']!='-' ? '/-' : ''); ?>
+	                <? $url .= $_GET['categorias']!='-' ? '/'.$_GET['categorias'] : ''; ?>
+                    <input type="hidden" name="direcionar" value="<?=$url?>" />
+				<? } ?>
+
+				<input type="hidden" name="gravar" value="1">
+			</form>
+			<script>ajaxForm('form_cadastro', 'cadastro.php')</script>
+            <div class="clear"></div>
+		</div>
+		<div class="h80 remove_edit clear"></div>
+
+
+	</section>

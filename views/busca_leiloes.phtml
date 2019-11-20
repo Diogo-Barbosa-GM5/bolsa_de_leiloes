@@ -1,0 +1,1085 @@
+<style>
+
+    #searchPage .filtros .boxFiltro {
+        background: #f7f7f7;
+        border: 1px solid #ccc;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        margin: 0 0 20px 0;
+    }
+
+    #searchPage .filtros h3 {
+        font-family: 'Ubuntu', sans-serif;
+        line-height: 22px;
+        font-weight: bold !important;
+        font-size: 20px;
+        color: #696969;
+        margin: 20px 0 10px 0;
+        font-weight: 500;
+    }
+
+    #searchPage .filtros .boxFiltro h4 {
+        font-family: 'Ubuntu', sans-serif;
+        line-height: 18px;
+        font-weight: bold !important;
+        font-size: 16px;
+        color: #696969;
+        font-weight: 500;
+        margin: 0;
+        padding: 10px 15px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    #searchPage .filtros .boxFiltro h5 {
+        font-family: 'Ubuntu', sans-serif;
+        line-height: 15px;
+        font-weight: normal;
+        font-size: 13px;
+        color: #696969;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin: 0;
+        padding: 10px 10px 0 10px;
+    }
+
+    /* Início da estilização checkboxBG */
+    #searchPage .filtros .boxFiltro ul.checkboxBG li input[type="checkbox"] {
+        display: none;
+    }
+
+    #searchPage .filtros .boxFiltro ul.checkboxBG {
+        overflow: hidden;
+        margin: 0;
+        padding: 5px 5px 10px 5px;
+    }
+
+    #searchPage .filtros .boxFiltro ul.checkboxBG li input[type="checkbox"] + label {
+        height: 35px;
+        width: 35px;
+        padding: 0;
+        margin: 5px 7px;
+        position: relative;
+        float: left;
+        display: block;
+        cursor: pointer;
+        font-family: 'Ubuntu', sans-serif;
+        line-height: 16px;
+        font-weight: normal;
+        font-size: 14px;
+        color: #696969;
+        line-height: 32px;
+        overflow: hidden;
+        z-index: 1;
+        text-align: center;
+        border: 1px solid #ccc;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        -moz-transition: all 0.25s ease-in-out;
+        -webkit-transition: all 0.25s ease-in-out;
+        -o-transition: all 0.25s ease-in-out;
+        transition: all 0.25s ease-in-out;
+    }
+
+    #searchPage .filtros .boxFiltro ul.checkboxBG li input[type="checkbox"] + label:after {
+        line-height: 22px;
+        content: "";
+        width: 35px;
+        height: 35px;
+        display: block;
+        position: absolute;
+        top: 50%;
+        margin-top: -18px;
+        z-index: -1;
+        left: -1px;
+        -moz-transition: all 0.25s ease-in-out;
+        -webkit-transition: all 0.25s ease-in-out;
+        -o-transition: all 0.25s ease-in-out;
+        transition: all 0.25s ease-in-out;
+        background: #ffffff;
+    }
+
+    #searchPage .filtros .boxFiltro ul.checkboxBG li input[type="checkbox"] + label:hover:after {
+        color: #696969;
+    }
+
+    #searchPage .filtros .boxFiltro ul.checkboxBG li input[type="checkbox"]:checked + label {
+        color: #ffffff;
+    }
+
+    #searchPage .filtros .boxFiltro ul.checkboxBG li input[type="checkbox"]:checked + label:after {
+        width: 29px;
+        height: 29px;
+        background: #6288d9;
+        border: 3px solid #ffffff;
+        -webkit-box-shadow: 0px 0px 0px 1px #cccccc;
+        -moz-box-shadow: 0px 0px 0px 1px #cccccc;
+        box-shadow: 0px 0px 0px 1px #cccccc;
+    }
+
+    /* Fim da estilização checkboxBG */
+
+
+    /* Início da estilização checkboxLB */
+
+    #searchPage .filtros .boxFiltro ul.checkboxLB > li {
+        display: block;
+        width: 100%;
+        float: left;
+        border-bottom: 1px solid #ccc;
+        -moz-transition: all 0.25s ease-in-out;
+        -webkit-transition: all 0.25s ease-in-out;
+        -o-transition: all 0.25s ease-in-out;
+        transition: all 0.25s ease-in-out;
+    }
+
+    #searchPage .filtros .boxFiltro ul.checkboxLB > li:last-child {
+        border-bottom: none;
+    }
+
+    #searchPage .filtros .boxFiltro ul.checkboxLB {
+        overflow: auto;
+        list-style: none;
+        display: block;
+        clear: both;
+        margin: 0;
+    }
+
+    #searchPage .filtros .boxFiltro ul.checkboxLB > li input[type="checkbox"] {
+        display: none;
+    }
+
+    #searchPage .filtros .boxFiltro ul.checkboxLB > li input[type="checkbox"] + label {
+        padding: 0px 0px 0px 30px;
+        margin: 10px;
+        position: relative;
+        width: calc(100% - 20px);
+        float: none;
+        display: block;
+        cursor: pointer;
+        font-family: 'Ubuntu', sans-serif;
+        line-height: 16px;
+        font-weight: normal;
+        font-size: 14px;
+        color: #696969;
+        line-height: 20px;
+    }
+
+    #searchPage .filtros .boxFiltro ul.checkboxLB > li input[type="checkbox"] + label:after {
+        line-height: 20px;
+        content: "";
+        width: 18px;
+        height: 18px;
+        display: block;
+        position: absolute;
+        top: 50%;
+        margin-top: -9px;
+        left: 1px;
+        -moz-transition: all 0.25s ease-in-out;
+        -webkit-transition: all 0.25s ease-in-out;
+        -o-transition: all 0.25s ease-in-out;
+        transition: all 0.25s ease-in-out;
+        background: #ffffff;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+    }
+
+    #searchPage .filtros .boxFiltro ul.checkboxLB > li input[type="checkbox"] + label:hover:after {
+        color: #696969;
+    }
+
+    #searchPage .filtros .boxFiltro ul.checkboxLB > li input[type="checkbox"]:checked + label:after {
+        background: #6288d9;
+        border: 3px solid #ffffff;
+        -webkit-box-shadow: 0px 0px 0px 1px #cccccc;
+        -moz-box-shadow: 0px 0px 0px 1px #cccccc;
+        box-shadow: 0px 0px 0px 1px #cccccc;
+    }
+
+    /* radio */
+
+    #searchPage .filtros .boxFiltro ul.checkboxLB > li input[type="radio"] {
+        display: none;
+    }
+
+    #searchPage .filtros .boxFiltro ul.checkboxLB > li input[type="radio"] + label {
+        padding: 0px 0px 0px 30px;
+        margin: 10px;
+        position: relative;
+        width: calc(100% - 20px);
+        float: none;
+        display: block;
+        cursor: pointer;
+        font-family: 'Ubuntu', sans-serif;
+        line-height: 16px;
+        font-weight: normal;
+        font-size: 14px;
+        color: #696969;
+        line-height: 20px;
+    }
+
+    #searchPage .filtros .boxFiltro ul.checkboxLB > li input[type="radio"] + label:after {
+        line-height: 20px;
+        content: "";
+        width: 18px;
+        height: 18px;
+        display: block;
+        position: absolute;
+        top: 50%;
+        margin-top: -9px;
+        left: 1px;
+        -moz-transition: all 0.25s ease-in-out;
+        -webkit-transition: all 0.25s ease-in-out;
+        -o-transition: all 0.25s ease-in-out;
+        transition: all 0.25s ease-in-out;
+        background: #ffffff;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+    }
+
+    #searchPage .filtros .boxFiltro ul.checkboxLB > li input[type="radio"] + label:hover:after {
+        color: #696969;
+    }
+
+    #searchPage .filtros .boxFiltro ul.checkboxLB > li input[type="radio"]:checked + label:after {
+        background: #6288d9;
+        border: 3px solid #ffffff;
+        -webkit-box-shadow: 0px 0px 0px 1px #cccccc;
+        -moz-box-shadow: 0px 0px 0px 1px #cccccc;
+        box-shadow: 0px 0px 0px 1px #cccccc;
+    }
+
+
+    /* Fim da estilização checkboxLB */
+
+
+    /* Início .valor */
+    #searchPage .filtros .boxFiltro.valor {
+        padding: 0 0 1px 0;
+    }
+
+    #searchPage .filtros .boxFiltro.valor .form-group {
+        overflow: hidden;
+    }
+
+    #searchPage .filtros .boxFiltro .form-group.inline {
+        margin: 10px;
+        padding: 0;
+    }
+
+    #searchPage .filtros .boxFiltro.valor .form-group input.rangeText {
+        width: calc(100% - 58px);
+        float: left;
+        height: 35px;
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+    }
+
+    #searchPage .filtros .boxFiltro.valor .form-group label {
+        width: 58px;
+        float: left;
+        height: 35px;
+        line-height: 35px;
+        margin: 0;
+        padding: 0 10px 0 0;
+    }
+
+    /* Fim .valor */
+
+    /* Início area */
+
+    #searchPage .filtros .boxFiltro.area {
+        padding: 0 0 1px 0;
+    }
+
+    #searchPage .filtros .boxFiltro.area .form-group {
+        overflow: hidden;
+    }
+
+    #searchPage .filtros .boxFiltro.area .form-group label {
+        width: 35px;
+        float: left;
+        height: 35px;
+        line-height: 35px;
+        margin: 0;
+        padding: 0 10px 0 0;
+    }
+
+    #searchPage .filtros .boxFiltro.area .form-group input.rangeText {
+        width: calc(100% - 65px);
+        float: left;
+        height: 35px;
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+    }
+
+    #searchPage .filtros .boxFiltro.area .form-group span {
+        width: 30px;
+        display: block;
+        float: left;
+        padding: 0 0 0 10px;
+        font-family: 'Ubuntu', sans-serif;
+        line-height: 16px;
+        font-weight: normal;
+        font-size: 14px;
+        color: #696969;
+        line-height: 35px;
+    }
+
+    /* Fim area*/
+
+    /* selectEstilizado */
+
+    .selectEstilizado {
+        text-align: right;
+        margin: 20px 13px;
+    }
+
+    .selectEstilizado label {
+        display: inline-block;
+        padding: 10px 0;
+        margin: 0;
+        line-height: 19px;
+        font-weight: normal;
+        font-size: 17px;
+        color: #696969;
+    }
+
+    .selectEstilizado select {
+        padding: 10px 20px 10px 10px;
+        line-height: 18px;
+        font-weight: normal;
+        font-size: 16px;
+        font-style: normal;
+        color: #696969;
+        display: inline-block;
+        width: 268px;
+        cursor: pointer;
+        cursor: default;
+        border: 1px solid #e5e5e5;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* Fim selectEstilizado */
+
+    .selectComitente {
+        margin: 10px;
+    }
+
+    .selectComitente select {
+        width: 100%;
+        font-style: normal;
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+
+    /* selectComitente */
+
+    /* Fim selectComitente */
+
+    form .form-group.inline label {
+        font-family: 'Ubuntu', sans-serif;
+        line-height: 16px;
+        font-weight: normal;
+        font-size: 14px;
+        color: #707071;
+        -moz-transition: all 0.25s ease-in-out;
+        -webkit-transition: all 0.25s ease-in-out;
+        -o-transition: all 0.25s ease-in-out;
+        transition: all 0.25s ease-in-out;
+    }
+
+    form .form-group.inline input[type="text"] {
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 14px;
+        padding: 10px 15px;
+        width: 100%;
+        color: #000000;
+        line-height: 18px;
+        font-weight: 300;
+        transition: all 0.25s ease-in-out;
+        box-shadow: none;
+        border-radius: 3px;
+    }
+
+    /* Ícones
+    .icone_caracteristicas div {
+       display: inline-block;
+    }
+
+    .icone_caracteristicas span {
+        display: block;
+        text-align: center;
+        width: 50px;
+        margin-top: 5px;
+    }
+
+   .icone_quarto {
+        background: url('../web/img/icones/quarto.png') no-repeat 0px 0px #FFF;
+        background-position: center;
+        padding: 12px 16px;
+    }
+
+    .icone_suite {
+        background: url('../web/img/icones/suite.png') no-repeat 0px 0px #FFF;
+        background-position: center;
+        padding: 12px 16px;
+    }
+
+    .icone_vaga {
+        background: url('../web/img/icones/carro.png') no-repeat 0px 0px #FFF;
+        background-position: center;
+        padding: 12px 16px;
+    }
+
+    .icone_area {
+        background: url('../web/img/icones/metro_quadrado.png') no-repeat 0px 0px #FFF;
+        background-position: center;
+        padding: 12px 16px;
+    }*/
+
+    /* Mensagem quando não acha nada */
+    .ajaxBlock > strong {
+        line-height: 34px;
+        font-weight: normal;
+        font-size: 32px;
+        color: #696969;
+        text-align: center;
+        margin: 0 auto;
+        width: 70%;
+        padding-top: 90px;
+        display: block;
+    }
+
+    .ajaxBlock > strong span {
+        font-size: 50px;
+        display: block;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    .ajaxBlock > strong:before {
+        content:"\f002";
+        font-style: normal;
+        font-family:'FontAwesome';
+        font-weight: bold;
+        font-stretch: normal;
+        font-size: 50px;
+        color: #f57e20;
+        line-height: 50px;
+        display: block;
+        margin-bottom: 20px;
+    }
+
+</style>
+
+<section id="busca_leiloes">
+
+    <div id="searchPage" class="centerr pt20 pb40">
+
+        <form id="form_busca_leiloes">
+            <div class="wr25">
+
+                <div class="filtros">
+
+                    <div class="boxForm">
+
+                        <h3>Filtrar por</h3>
+                        <div class="boxFiltro findBox">
+                            <div class="form-group inline">
+                                <div class="ui-widget">
+                                    <input type="text" id="localidade" class="inputSearch" name="localidade" placeholder="Digite cidade ou bairro..." value="" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="boxFiltro">
+                            <a href="/busca_leiloes">
+                               <h4 class="tac">Limpar Filtros</h4>
+                            </a>
+                        </div>
+
+                        <div class="boxFiltro">
+                            <div class="">
+                                <h4>Comitente</h4>
+                                <div class="selectComitente">
+                                    <select name="comitente" id="comitente">
+                                           <option value=""> Todos </option>
+                                        <?php foreach($comitentes as $comitente): ?>
+                                            <option value="<?php echo $comitente['id']?>"><?php echo $comitente['nome']?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="boxFiltro">
+                            <h4>Tipo do leilão</h4>
+                            <ul class="checkboxLB">
+                                <li class="optionSelected">
+                                    <input name="natureza[]" id="judicial" value="1" type="checkbox">
+                                    <label for="judicial">Judicial</label>
+                                </li>
+                                <li class="optionSelected">
+                                    <input name="natureza[]" id="extrajudicial" value="2" type="checkbox">
+                                    <label for="extrajudicial">Extrajudicial</label>
+                                </li>
+                                <li class="optionSelected">
+                                    <input name="natureza[]" id="privado" value="3" type="checkbox">
+                                    <label for="privado">Privado</label>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="boxFiltro">
+                            <h4>Situação do leilão</h4>
+                            <ul class="checkboxLB">
+                                <li class="optionSelected">
+                                    <input name="situacao[]" id="aberto" value="0" type="checkbox">
+                                    <label for="aberto">Aberto</label>
+                                </li>
+                                <!--<li class="optionSelected">
+                                    <input name="situacao[]" id="em_loteamento" value="1" type="checkbox">
+                                    <label for="em_loteamento">Em loteamento</label>
+                                </li>-->
+                                <li class="optionSelected">
+                                    <input name="situacao[]" id="nao_arrematado" value="3" type="checkbox">
+                                    <label for="nao_arrematado">Não arrematado</label>
+                                </li>
+                                <li class="optionSelected">
+                                    <input name="situacao[]" id="em_condicional" value="10" type="checkbox">
+                                    <label for="em_condicional">Em condicional</label>
+                                </li>
+                                <li class="optionSelected">
+                                    <input name="situacao[]" id="arrematado" value="2" type="checkbox">
+                                    <label for="arrematado">Arrematado</label>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="boxFiltro">
+                            <h4>Tipo do imóvel</h4>
+                            <ul class="checkboxLB">
+                                <?php foreach($tipologia as $tipo_imovel): ?>
+                                <li class="optionSelected">
+                                    <input name="tipologia[]" id="<?php echo $tipo_imovel['nome']; ?>" value="<?php echo $tipo_imovel['id']; ?>" type="checkbox">
+                                    <label for="<?php echo $tipo_imovel['nome']; ?>"><?php echo $tipo_imovel['nome']; ?></label>
+                                </li>
+                                <?php endforeach; ?>
+
+                            </ul>
+                        </div>
+
+                        <div class="boxFiltro valor">
+                            <h4>Lance inicial</h4>
+                            <div class="form-group inline">
+                                <label class="price" for="rangeValorMin">De R$</label>
+                                <input type="text" id="rangeValorMin" name="valor[min]" class="rangeText valor" value=""
+                                       maxlength="11">
+                            </div>
+                            <div class="form-group inline">
+                                <label class="price" for="rangeValorMax">até R$</label>
+                                <input type="text" id="rangeValorMax" name="valor[max]" class="rangeText valor" value=""
+                                       maxlength="11">
+                            </div>
+                        </div>
+
+                        <div class="boxFiltro area">
+                            <h4>Área privativa (m²)</h4>
+                            <div class="form-group inline">
+                                <label for="rangeAreaMin">De</label>
+                                <input type="text" id="rangeAreaMin" name="area[min]" class="rangeText" value=""
+                                       maxlength="5">
+                                <span>m²</span>
+                            </div>
+                            <div class="form-group inline">
+                                <label for="rangeAreaMax">até</label>
+                                <input type="text" id="rangeAreaMax" name="area[max]" class="rangeText" value=""
+                                       maxlength="5">
+                                <span>m²</span>
+                            </div>
+                        </div>
+
+                        <div class="boxFiltro">
+                            <h4>Cômodos</h4>
+                            <div class="selectCheck" data-group="dormitorio" style="display: block;"><h5>Quartos</h5>
+                                <ul class="checkboxBG">
+                                    <li>
+                                        <input name="dormitorio[]" type="checkbox" id="dormitorio0" value="1">
+                                        <label for="dormitorio0">1+</label>
+                                    </li>
+                                    <li>
+                                        <input name="dormitorio[]" type="checkbox" id="dormitorio1" value="2">
+                                        <label for="dormitorio1">2+</label>
+                                    </li>
+                                    <li>
+                                        <input name="dormitorio[]" type="checkbox" id="dormitorio2" value="3">
+                                        <label for="dormitorio2">3+</label>
+                                    </li>
+                                    <li>
+                                        <input name="dormitorio[]" type="checkbox" id="dormitorio3" value="4">
+                                        <label for="dormitorio3">4+</label>
+                                    </li>
+                                    <li>
+                                        <input name="dormitorio[]" type="checkbox" id="dormitorio4" value="5">
+                                        <label for="dormitorio4">5+</label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="selectCheck">
+                                <h5>Suítes</h5>
+                                <ul class="checkboxBG">
+                                    <li>
+                                        <input type="checkbox" name="suite[]" id="suite0" value="1">
+                                        <label for="suite0">1+</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="suite[]" id="suite1" value="2">
+                                        <label for="suite1">2+</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="suite[]" id="suite2" value="3">
+                                        <label for="suite2">3+</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="suite[]" id="suite3" value="4">
+                                        <label for="suite3">4+</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="suite[]" id="suite5" value="5">
+                                        <label for="suite5">5+</label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="selectCheck">
+                                <h5>Vagas</h5>
+                                <ul class="checkboxBG">
+                                    <li>
+                                        <input type="checkbox" name="vagas[]" id="vagas0" value="1">
+                                        <label for="vagas0">1+</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="vagas[]" id="vagas1" value="2">
+                                        <label for="vagas1">2+</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="vagas[]" id="vagas2" value="3">
+                                        <label for="vagas2">3+</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="vagas[]" id="vagas3" value="4">
+                                        <label for="vagas3">4+</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="vagas[]" id="vagas4" value="5">
+                                        <label for="vagas4">5+</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- .boxForm --->
+
+                </div>
+                <!-- .filtros -->
+            </div>
+            <div class="wr95 pl5">
+
+                <div class="filtros">
+                    <div class="selectEstilizado">
+                        <label for="ordenacao">Ordenar por</label>
+                        <select name="ordenacao" id="ordenacao">
+                            <option value="maior_lance_inicial">Maior lance inicial</option>
+                            <option value="menor_lance_inicial">Menor lance inicial</option>
+                            <option value="maior_lance_atual">Maior lance atual</option>
+                            <option value="menor_lance_atual">Menor lance atual</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="listaDados">
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+
+        $('.rangeText').mask('###.###.###', {reverse:true});
+
+        //Ativando toolips
+        $(document).tooltip();
+
+        // Início de chamada que vêm da home
+        <?php
+            $busca_home = $_GET['busca_home'];
+            if(isset($busca_home) && $busca_home == 1) {
+        ?>
+           chamadaAjaxBuscaLeiloes(true);
+           window.history.pushState("", "", "/busca_leiloes/");
+        <?php
+            } else {
+        ?>
+                chamadaAjaxBuscaLeiloes();
+        <?php
+            }
+        ?>
+
+        // Fim de chamada que vêm da home
+
+        // Autocomplete para localidade
+
+        $("#localidade").autocomplete({
+            source: function( request, response ) {
+                $.ajax( {
+                    url: "/busca_autocomplete/",
+                    dataType: "json",
+                    data: {
+                        term: request.term
+                    },
+                    success: function( data ) {
+                        response( data );
+                    }
+                } );
+            },
+            minLength: 1
+        });
+
+        // Fim do Autocomplete para localidade
+
+
+        $("input").change(function () {
+            chamadaAjaxBuscaLeiloes()
+        });
+
+        $("select").change(function () {
+            chamadaAjaxBuscaLeiloes()
+        });
+
+        function chamadaAjaxBuscaLeiloes(busca = false) {
+
+            var serializeDados = $("#form_busca_leiloes").serialize();
+
+            //*********************************************
+            //Início da lógica quando a chamada vêm da HOME
+            <?php
+            if(isset($busca_home) && $busca_home == 1) {
+                $dados = [];
+
+                if(isset($_GET['natureza'])){
+                    $natureza = $_GET['natureza'];
+                    $dados['natureza'] = $natureza;
+                }
+
+                if(isset($_GET['tipologia'])){
+                    $tipologia = $_GET['tipologia'];
+                    $dados['tipologia'] = $tipologia;
+                }
+
+                if(isset($_GET['localidade'])){
+                    $localidade = $_GET['localidade'];
+                    $dados['localidade'] = $localidade;
+                }
+
+                if(isset($_GET['ordenacao'])){
+                    $ordenacao = $_GET['ordenacao'];
+                    $dados['ordenacao'] = $ordenacao;
+                }
+            }
+            ?>
+
+            <?php if(!empty($dados)): ?>
+              if(busca == true) {
+                  serializeDados = <?php echo json_encode($dados, JSON_UNESCAPED_UNICODE) ?>
+              }
+            <?php endif; ?>
+
+            //Fim da lógica quando a chamada vêm da HOME
+            //*******************************************
+
+            $.ajax({
+                url: "/busca/",
+                type: "GET",
+                data: serializeDados,
+                contentType: "application/x-www-form-urlencoded",
+                dataType: "json",
+                success: function (data, textStatus) {
+
+                    console.log(data);
+                    console.log(textStatus);
+
+                    //removendo conteúdo existente antes de inserir um novo
+                    $("#listaDados").html("");
+
+                    // Interpretando retorno JSON...
+                    var leilao = JSON.parse(JSON.stringify(data));
+
+                    // Elemento que será preenchido com a HTML
+                    var item = '';
+
+                    // Se estiver vazio eu apresento uma mensagem
+                    if(data.length == 0){
+                          item = '<div class="ajaxBlock">';
+                         item += '<strong><span>Ops...</span> Nenhum imóvel encontrado para a combinação de filtros realizada.</strong>';
+                         item += '</div>';
+                    }
+
+                    // realizo interações para preencher os dados no html com javascript
+                    $.each(leilao, function (index, value) {
+
+                        // Listando os campos
+                        let id_lote = leilao[index].id_lote;
+                        let nome_lote = leilao[index].nome_lote;
+                        let nome_meta = leilao[index].nome_meta;
+                        let estados = leilao[index].estado_lote;
+                        let cidades = leilao[index].cidade_lote;
+                        let foto = leilao[index].foto;
+                        let lance_inicial = leilao[index].lance_ini;
+                        let lance_recente = leilao[index].lance_recente;
+                        let situacao = leilao[index].situacao;
+                        let natureza = leilao[index].natureza;
+                        let codigo_leiloes = leilao[index].codigo_leiloes;
+                        let tipo_leiloes = leilao[index].tipo_leiloes;
+                        let foto_comitente = leilao[index].foto_comitente;
+                        let dormitorios = leilao[index].quartos;
+                        let suites = leilao[index].suites;
+                        let vagas = leilao[index].vagas;
+                        let area_privativa = leilao[index].area_privativa;
+                        let fase_da_obra = leilao[index].obra;
+                        let data_ini_leilao = leilao[index].data_ini;
+                        let data_fim_leilao = leilao[index].data_fim;
+
+                        if (dormitorios == null) {
+                            dormitorios = 0;
+                        }
+
+                        if (suites == null) {
+                            suites = 0;
+                        }
+
+                        // indicando o natureza do leilão
+                        let natureza_nome = '';
+
+                        switch (natureza) {
+                            case '1':
+                                natureza_nome = 'Judicial';
+                                break;
+                            case '2':
+                                natureza_nome = 'ExtraJudicial';
+                                break;
+                            case '3':
+                                natureza_nome = 'Privado';
+                                break;
+                        }
+
+                        // se nome_meta estiver vazio usar nome_lote
+                        if (!nome_meta) {
+                            nome_meta = nome_lote;
+                        }
+
+                        // indicando qual o tipo da situação
+                        let situacao_nome = '';
+                        let situacao_cor = '';
+
+                        switch (situacao) {
+                            case '0':
+                                situacao_nome = 'Aberto';
+                                situacao_cor = 'aberto';
+                                break;
+                            case '1':
+                                situacao_nome = 'Em loteamento';
+                                situacao_cor = 'em_breve';
+                                break;
+                            case '2':
+                                situacao_nome = 'Arrematado';
+                                situacao_cor = 'arrematado';
+                                break;
+                            case '3':
+                                situacao_nome = 'Não Arrematado';
+                                situacao_cor = 'nao_arrematado';
+                                break;
+                            case '10':
+                                situacao_nome = 'Em condicional';
+                                situacao_cor = 'condicional';
+                                break;
+                        }
+
+
+                        item += '<ul>\n' +
+                            '\n' +
+                            '                <li class="wr4_personalizado borda_leiloes LL_box_16">\n' +
+                            '\n' +
+                            '                    <a href="/lote/' + nome_lote + '/' + id_lote + '/" class="posr db" style="max-width: 310px;min-height: 490px;margin: 20px auto;">\n' +
+                            '\n' +
+                            '\n' +
+                            '                        <div class="">\n' +
+                            '                            <div class="wf6 p10 pr2 fz12 ttu texto_preto">\n' +
+                            '                                <div class="p8 pl10 pr10 limit LL_natureza texto_centralizado borda_arredondada" style="background-color: #EDEDED;">' + natureza_nome + '</div>\n' +
+                            '                            </div>\n' +
+                            '                            <div class="wf6 p10 pl2 fz12 ttu tar texto_preto">\n' +
+                            '                                <div class="p8 pl10 pr10 texto_preto limit LL_tipos texto_italico">' + tipo_leiloes + '</div>\n' +
+                            '                            </div>\n' +
+                            '                            <div class="clear"></div>\n' +
+                            '                        </div>\n' +
+                            '\n' +
+                            '                        <div>\n' +
+                            '                            <div class="posr pl10 pr10">\n' +
+                            '                                <div class="posa t5 r15 z1 bd_ccc back_fff">\n' +
+                            '                                    <img src="/web/fotos/' + foto_comitente + '" style="max-width: 70px; max-height: 70px;" class="db w100p m-a">\n' +
+                            '                                </div>\n' +
+                            '                                <div class="posr h200 c_flex jc back_fff">\n' +
+                            '                                    <img src="/web/fotos/' + foto + '" style="max-width: 300px; max-height: 200px;" class="db w100p m-a" title="' + nome_meta + '" alt="' + nome_meta + '">\n' +
+                            '                                </div>\n' +
+                            '\n' +
+                            '                                <div style="" class="w100p">\n' +
+                            '                                    <div class="">\n' +
+                            '                                        <ul class="LL_situacao p5 fz11 texto_branco" situacao="' + situacao_cor + '">\n' +
+                            '                                            <li class="tac"><p>' + situacao_nome + '</p></li>\n' +
+                            '                                            <li class="clear"></li>\n' +
+
+                            '                                        </ul>\n' +
+                            '                                    </div>\n' +
+                            '                                </div>\n' +
+                            '\n' +
+                            '                                <div class="z1 b0 l0 w100p">\n' +
+                            '                                    <div style="display: inline-block;min-height:30px;">\n' +
+                            '                                        <div class="dn p5 fz11 texto_preto LL_praca1 local onde vou colocar a faixa desocupado" style="display: block;">\n' +
+                            '                                            <span class="dib texto_negrito"></span>\n' +
+                            '                                            <div class="dib LL_data_ini"><data class="dib"></data><hora class="dib"></hora></div>\n' +
+                            '                                        </div>\n' +
+                            '                                        <div class="dn p5 fz11 texto_preto LL_praca2" style="display: none;">\n' +
+                            '                                            <span class="dib texto_negrito">2ª Praça</span> <div class="dib dataini"></div>\n' +
+                            '                                        </div>\n' +
+                            '                                    </div>\n' +
+                            '                                </div>\n' +
+                            '\n' +
+                            '                            </div>\n' +
+                            '\n' +
+                            '                            <ul class="p10">\n' +
+                            '                                <li class="limit fz16  texto_preto LL_nome" style="min-height:58px;font-weight:bold;">' + nome_meta + '</li>\n' +
+                            '\n' +
+                            '                                        <li class="pt10 icone_caracteristicas">\n' +
+
+                            '                                           <div>\n' +
+                            '                                             <span class="icone_quarto" title="Quartos"></span>\n' +
+                            '                                             <span>' + dormitorios + '</span>\n' +
+                            '                                           </div>\n' +
+
+                            '                                           <div>\n' +
+                            '                                             <span class="icone_suite" title="Suítes"></span>\n' +
+                            '                                             <span>' + suites + '</span>\n' +
+                            '                                           </div>\n' +
+
+                            '                                           <div>\n' +
+                            '                                             <span class="icone_vaga" title="Vagas"></span>\n' +
+                            '                                             <span>' + vagas + '</span>\n' +
+                            '                                           </div>\n' +
+
+                            '                                           <div>\n' +
+                            '                                             <span class="icone_area" title="Área"></span>\n' +
+                            '                                             <span>' + area_privativa + ' m²</span>\n' +
+                            '                                           </div>\n' +
+
+                            '                                        </li>\n' +
+
+                            '                            </ul>\n' +
+                            '\n' +
+                            '                            <ul class="p5 back_fff">\n' +
+                            '\n' +
+                            '                                <li class="texto_preto fz11">\n' +
+                            '                                    <ul class="wr12">\n' +
+                            '                                        <div class="wr12 pl10 bdt_F0F0F0">\n' +
+                            '\n' +
+                            '                                            <div class="pt15 dn LL_lance_ini" style="display: block;">\n' +
+                            '                                                <div class="fwb">Lance inicial:<b class="fz16 pl5 texto_roxo">R$&nbsp;' + lance_inicial + '</b></div>\n' +
+                            '                                            </div>\n' +
+                            '                                        </div>\n' +
+                            '\n' +
+                            '                                    </ul>\n' +
+                            '                                </li>\n' +
+                            '\n' +
+                            '                                <li class="texto_preto fz11">\n' +
+                            '                                    <ul class="wr12">\n' +
+                            '                                        <div class="wr12 pl10">\n' +
+                            '\n' +
+                            '                                            <div class="pt15 dn LL_lance_ini" style="display: block;">\n' +
+                            '                                                <div class="fwb">Lance atual:<b class="fz16 pl5 texto_roxo">R$&nbsp;' + lance_recente + '</b></div>\n' +
+                            '                                            </div>\n' +
+                            '                                        </div>\n' +
+                            '\n' +
+                            '                                    </ul>\n' +
+                            '                                </li>\n' +
+                            '\n' +
+                            '                                <li class="texto_preto fz11">\n' +
+                            '\n' +
+                            '                                    <ul class="wr12">\n' +
+                            '\n' +
+                            '                                        <li class="pt10 pb1">\n' +
+                            '                                            <div class="dib w14"><i class="icone_bandeira"></i></div>\n' +
+                            '                                            <div class="dib LL_codigo pl10">' + codigo_leiloes + '</div>\n' +
+                            '                                        </li>\n' +
+                            '\n' +
+                            '                                        <li class="pt10 pb1">\n' +
+                            '                                            <div class="dib w14 pr5 tac"><i class="icone_local"></i></div>\n' +
+                            '                                            <div class="dib LL_local" style="padding:0 0 0 10px;margin-top:-20px;">' + cidades + ', ' + estados + '</div>\n' +
+                            '                                        </li>\n' +
+                            '\n' +
+                            '                                        <li class="pt10 LL_data_ini" style="">\n' +
+                            '                                            <div class="dib w12"><i class="icone_calendario"></i></div>\n' +
+                            '                                            <div class="dib vam pl10 texto_negrito">Início:</div>\n' +
+                            '                                            <div class="dib">' + data_ini_leilao + '</div>\n' +
+                            '                                        </li>\n' +
+                            '\n' +
+                            '                                        <li class="pt10 LL_data_fim" style="">\n' +
+                            '                                            <div class="dib w12"><i class="icone_calendario"></i></div>\n' +
+                            '                                            <div class="dib vam pl10 texto_negrito">Término:</div>\n' +
+                            '                                            <div class="dib">' + data_fim_leilao + '</div>\n' +
+                            '                                        </li>\n' +
+
+
+
+                            '\n' +
+                            '                                        <li class="pt10 LL_data_fim" style="">\n' +
+                            '                                            <div class="dib vam pl10 texto_negrito">Fase da obra:</div>\n' +
+                            '                                            <div class="dib">' + fase_da_obra + '</div>\n' +
+                            '                                        </li>\n' +
+
+
+                            '                                    </ul>\n' +
+                            '\n' +
+                            '                                    <div class="clear"></div>\n' +
+                            '                                </li>\n' +
+                            '                            </ul>\n' +
+                            '\n' +
+                            '                        </div>\n' +
+                            '                    </a>\n' +
+                            '\n' +
+                            '                </li>\n' +
+                            '\n' +
+                            '            </ul>'
+                    }); // Fim do each (iteração)
+
+                    $("#listaDados").append(item);
+
+                },
+                error: function (erro) {
+                    console.log("Error:" + erro);
+                }
+            }); // fim do ajax
+
+        }//chamadaAjaxBuscaLeiloes
+
+
+    });
+</script>

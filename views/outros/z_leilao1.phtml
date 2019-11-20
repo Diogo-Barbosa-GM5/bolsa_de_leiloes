@@ -1,0 +1,80 @@
+<?
+	if($_GET['pg'] == 'home'){
+		$mysql->colunas = 'id, nome, foto, cidades, estados, count';
+		$mysql->filtro = " WHERE ".STATUS." AND situacao = 0 AND leiloes = '".$value->id."' ORDER BY estados asc, ".ORDER." ";
+		$lotes = $mysql->read('lotes');
+
+		// 1 Lote
+		if(count($lotes) == 1 AND isset($lotes[0]->id)){
+			$value->foto = $lotes[0]->foto;
+		}		
+	}
+?>
+
+	<a href="<?=url($_GET['pg']=='home' ? 'lotes' : 'lote', $value)?>" class="db h400 m10 bd_ccc">
+
+		<div class="posr">
+			<div class="posa z1 l10 fz12 ttu cor_fff">
+				<div class="dib p5 pl10 pr10 LL_natureza"></div>
+			</div>
+			<div class="posa z1 r10 fz12 ttu cor_fff">
+				<div class="dib p5 pl10 pr10 cor_333 bd_ccc bdt0 back_fff LL_tipos"></div>
+			</div>
+
+			<div>
+				<? $img->tags = ' class="db w100p" ' ?>
+				<?=$img->img($value, 300, 200)?>
+				<div class="posa z1 b0 l0 w100p">
+					<div class="p10 ts1 cor_fff">
+						<div class="dib" title="Visualização"><div class="dib w15"><i class="fa fa-eye"></i></div></i> <span class="LL_count"></span></div> &nbsp;
+						<div class="dib" title="Lances" class="pt2"><div class="dib w15"><i class="fa fa-gavel"></i></div> <span class="LL_count_lances"></span></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<ul class="LL_situacao p5 p8 fz11 ts1 cor_fff">
+			<li class="h37 mb5 fz16 o-h LL_nome"></li>
+			<li class="wf7 ttu"><p></p></li>
+			<li class="wf5 pr5 tar ttu LL_praca_info"></li>
+			<li class="clear"></li>
+		</ul>
+
+		<ul class="p10">
+			<li>
+				<span class="dib w60 fz11 cor_888">Leilão</span>
+				<span class="LL_codigo"></span>
+			</li>
+			<li class="pt5">
+				<span class="dib w60 fz11 cor_888">Localidade</span>
+				<span class="LL_local"></span>
+			</li>
+
+			<li class="pt10 dn LL_data_hora_ini">
+				<span class="dib  w60 fz11 cor_888">Inicio:</span>
+				<data class="dib"></data>
+			</li>
+			<li class="pt10 dn LL_data_hora_fim">
+				<span class="dib  w60 fz11 cor_888">Término:</span>
+				<data class="dib"></data>
+			</li>
+
+			<li class="pt10 dn LL_praca1">
+				<span class="dib w60 fz11 cor_888">1ª Praça</span>
+				<dataini class="dib"></dataini>
+				<div class="pt10 dn datafim">
+					<div class="dib w60 fz11 cor_888">Término</div>
+					<datafim class="dib"></datafim>
+				</div>
+				<b class="db pl63"></b>
+			</li>
+			<li class="pt8 dn LL_praca2">
+				<span class="dib w60 fz11 cor_888">2ª Praça</span>
+				<dataini class="dib"></dataini>
+			</li>
+
+			<li class="pt8 pl63 fwb LL_lance_atual"></li>
+
+		</ul>
+
+	</a>

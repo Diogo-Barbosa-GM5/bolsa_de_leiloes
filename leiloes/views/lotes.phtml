@@ -1,0 +1,129 @@
+
+	<section id="lotes">
+
+		<div class="centerr pt20 pb40">
+
+			<div class="posr">
+
+				<? if(isset($leiloes->id)){ ?>
+					<? include 'z_top_lote.phtml' ?>
+				<? } else { ?>
+					<div class="dib div_lotes_titulo fwb fz40 texto_laranja"><?=lang('Leilões')?></div>
+				<? } ?>
+
+				<!--<div class="fll h30 pt44"><?=rede()?></div>-->
+                <!--
+                <div class="dib tar div_lotes_links">
+
+                        <a class="th-list" onclick="lotes_list_galeria('list', this)"><i class="fa fa-th-list"></i> <?=lang('Lista')?></a>
+                        <a class="th-large" onclick="lotes_list_galeria('galeria', this)"><i class="fa fa-th-large"></i> <?=lang('Galeria')?></a>
+
+                </div>
+                -->
+
+				<div class="h5 borda_laranja_top clear"></div>
+			</div>
+
+
+			<div class="wr25 pt20 pr20">
+                <div class="fz24 pb8 pr10"><?=lang('Filtros')?></div>
+                <div>
+                    <? foreach ($topo_status as $key => $value) { ?>
+                        <div class="mt5 mb5 pt5 pb20">
+                            <a href="<?=busca_url('status='.$value->id)?>" class="borda_arredondada p8 pl10 pr10 ttu <?=(isset($_GET['status']) AND $_GET['status']==$value->id) ? 'cor_fff fundo_laranja' : 'back_ddd'?>"><?=$value->nome?></a>
+                        </div>
+                    <? } ?>
+                </div>
+
+				<div>
+					<? include 'z_categorias.phtml' ?>
+				</div>
+                <div class="pt15 pb15">
+                    <a href="<?=DIR?>/lotes/" class="borda_filtro p10">
+                       <span class="pt10 pr5"><i class="icone_lixeira"></i></span><span class="pt10">LIMPAR FILTROS</span>
+                    </a>
+                </div>
+			</div>
+
+			<div class="wr95">
+				<!-- GALERIA -->
+				<ul class="pt20 lotes_list_galeria galeria">
+					<? foreach ($lotes as $key => $value) { ?>
+						<li class="wr4_personalizado  pb20 borda_leiloes LL_box_<?=$value->id?>">
+							<? include 'z_leilao.phtml' ?>
+						</li>
+						<?=clear($key, 3)?>
+					<? } ?>
+					<li class="clear"></li>
+					<?=$pagg?>
+				</ul>
+				<!-- GALERIA -->
+
+				<!-- LISTA-->
+				<div class="lotes_list_galeria list dn">
+					<? if($lotes){ ?>
+						<table class="w100p mt30">
+							<tr>
+								<th class="table_top"><?=lang('Ao Vivo')?></th>
+								<th class="table_top"><?=lang('Início')?></th>
+								<th class="table_top"><?=lang('Lote')?></th>
+								<th class="table_top"><?=lang('Descrição')?></th>
+								<th class="table_top"><?=lang('Lance Atual')?></th>
+								<th class="table_top"><?=lang('Participe')?></th>
+							</tr>
+							<? foreach ($lotes as $key => $value) { ?>
+								<tr class="LL_box_<?=$value->id?> fz12 LL_box_<?=$value->id?>">
+									<td class="table_center tac">
+										<a class="dib p10 back_aaa br2">
+											<i class="fa fa-play-circle-o fz16 fwb cor_fff hoverr-op5"></i>
+										</a>
+									</td>
+									<td class="table_center tac">
+										<a href="<?=url('lote', $value)?>" class="db LL_data_ini">
+											<data></data> - <hora></hora>h
+										</a>
+									</td>
+									<td class="table_center tac">
+										<a href="<?=url('lote', $value)?>" class="db">
+											<div class="LL_codigo"></div>
+											<?=$value->ordem?>
+										</a>
+									</td>
+									<td class="table_center tac">
+										<a href="<?=url('lote', $value)?>" class="db LL_nome">
+										</a>
+									</td>
+									<td class="table_center tac">
+										<a href="<?=url('lote', $value)?>" class="db LL_lance_atual">
+											<b class="fwn"></b>
+										</a>
+									</td>
+									<td class="table_center tac">
+										<a href="" class="dib p10 back_aaa br2">
+											<i class="fa fa-gavel fz16 fwb cor_fff hoverr-op5"></i>
+										</a>
+									</td>
+								</tr>
+							<? } ?>
+						</table>
+						<div class="h10 clear"></div>
+					<? } ?>
+					<div class="h20 clear"></div>
+					<?=$pagg?>
+				</div>
+				<!-- LISTA-->
+
+			</div>
+
+			<div class="clear"></div>
+
+            <div class="fundo_laranja cor_fff fwb borda_arredondada fz15 p20 tac">
+                <span class="dib pr10 pl10">Faça seu cadastro e participe dos melhores leilões.</span> <a href="<?=DIR?>/cadastro/" class="dib fundo_roxo cor_fff p20 pt6 pb6  borda_arredondada">Cadastre-se</a>
+            </div>
+
+		</div>
+
+
+	</section>
+
+<?=leiloes(array(), $lotes)?>

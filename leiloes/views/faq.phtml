@@ -1,0 +1,35 @@
+
+	<section id="faq">
+
+		<div class="centerr pt40 pb40">
+			<div class="fz24 fwb texto_laranja"><?=lang('FAQ | Perguntas Frequentes')?></div>
+
+			<ul class="pt30">
+				<? foreach ($faq as $key => $value) { ?>
+					<li class="posr">
+						<div onclick="faq(this)" class="<?=!$key ? 'ativo' : ''?> mb20 fz14 c-p bd_E8E8E8 back_F0F0F0">
+							<div class="topo posa w55 p15 tac fz18"><?=$key+1?></div>
+							<div class="p15 pl20 ml55 mr45 bdl_E8E8E8 bdr_E8E8E8 back_F8F8F8">
+								<span class="topo fz18"><?=$value->nome?></span>
+								<div class="txt pt10 pb10"><?=txt($value)?></div>								
+							</div>
+							<div class="posa t0 r0 p15 pl20 fz18">
+								<i class="fa fa-plus cor_B6B6B6"></i>
+								<i class="fa fa-minus cor_AE1C20"></i>
+							</div>
+						</div>
+					</li>
+				<? } ?>
+			</ul>
+
+			<div class="h20"></div>
+
+			<div class="tac">
+				<div class="pb10 fz20 fwb"><?=lang('Ficou alguma dúvida?')?> <span class="texto_roxo"><?=lang('Nós queremos te ajudar')?></span></div>
+				<a href="<?=DIR?>/fale/" class="cor_fff"><button class="p15 pl20 pr20 fz16 ttu cor_fff bd0 fundo_laranja"><?=lang('Entre em contato')?></button></a>
+			</div>
+
+		</div>
+
+
+	</section>

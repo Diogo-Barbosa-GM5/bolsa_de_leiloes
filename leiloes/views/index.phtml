@@ -1,0 +1,48 @@
+<?
+	echo
+		'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> '.
+		'<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br"> '.
+			'<head>'.
+           '<!-- Google Tag Manager -->
+            <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({\'gtm.start\':
+            new Date().getTime(),event:\'gtm.js\'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!=\'dataLayer\'?\'&l=\'+l:\'\';j.async=true;j.src=
+            \'https://www.googletagmanager.com/gtm.js?id=\'+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,\'script\',\'dataLayer\',\'GTM-K6TN235\');</script>
+            <!-- End Google Tag Manager -->'.
+				META.CSS.
+				'<script> var HOST = "'.$_SERVER["HTTP_HOST"].'"; var DIR = "'.DIR.'"; var ADMIN = "'.ADMIN.'"; var LUGAR = "'.LUGAR.'"; var $_SESSION = new Array();  var $_LOTES = new Array(); </script> '.
+				JAVASCRIPT.
+			'</head> ';
+
+		$input = new Input();
+		$img = new Imagem();
+		$mysql = new Mysql();
+
+		echo
+			'<body> '.
+            '<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K6TN235"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --> '.
+				' <div class="tudo pg_'.$pg.'"> ';
+
+    				include 'z_top.phtml';
+
+					echo
+					'<article id="principal"> ';
+						include $pg.'.phtml';
+						echo  '<div class="clear"></div> '.
+					'</article> ';
+
+					include 'z_footer.phtml';
+
+				echo 
+				sistema_mautic().
+				'</div> '.
+				'<script> iniciar_events_site(); </script> '.
+			'</body> ';
+			echo isset($style_zz) ? $style_zz : '';
+		echo '</html> ';
+
+?>

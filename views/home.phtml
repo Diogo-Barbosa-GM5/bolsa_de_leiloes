@@ -1,0 +1,265 @@
+	<section id="home">
+	
+		<div style=" background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(196,194,196,1) 100%); max-height: 5%;">
+
+			<div class="centerr">
+
+				<? $leiloes_e_lotes_home = 1 ?>
+				<? if($leiloes_e_lotes_star){ ?>
+                            <h2 style="padding-top:1%; font-size: 20px;">Nossos Lotes em Destaque</h2>
+					<!--<h2 class="pt20 fz24 fwn ttu cor_fff"><?=lang('SUPER DESTAQUES')?> <span class="fz12 vam">(<?=lang('Lotes e Leilões')?>)</span> </h2>-->
+					                 <div class="posr mt20 mb5 Plugin_seta_laranja">
+                        <ul class="Plugin2" w="285" min="1" max="4" id="destaquesbanners" style="height: 600px!important">
+
+                            <?
+
+
+                            foreach ($leiloes_e_lotes_star as $key => $value) { ?>
+                                <? $tipo_box = tipo_box($value)?>
+							<? if($tipo_box){ ?>
+
+                                <li class=" LL_box_<?=$tipo_box?>">
+                                    <div class="w285 h500 bdw20 bdl0 bd_<?=color($info->color_fundo_ofertas)?>  ">
+                                        <? include 'z_leilao.phtml' ?>
+                                    </div>
+                                </li>
+                                <? } ?>
+                            <? } ?>
+                        </ul>
+                    </div>
+				<? } ?>
+				<? unset($leiloes_e_lotes_home); ?>
+
+			</div>
+		
+		</div>
+
+
+
+		<div class="centerr pt40 pb40">
+
+			<div class="wr3">
+				<h2 class="pb20 fz24 texto_laranja"><?=lang('Leilões em andamento')?></h2>
+			</div>
+			<!--<div class="wr9">
+				<div class="flr p10 pr5 bs1 bd_ccc back_fff">
+					<? foreach ($topo_status as $key => $value) { ?>
+						<a href="<?=busca_url('status='.$value->id)?>" class="dib p8 pl10 pr10 mr5 cor_fff leilao_<?=$value->id?>"><?=$value->nome?></a>
+					<? } ?>
+				</div>
+				<div class="flr fwb pt20 pr10"><?=lang('Filtros')?></div>
+			</div>-->
+			<div class="clear"></div>
+
+            <?
+              //Acrescentado o if por Diogo -19/06/2019 para esconder categoria quando estiver na home
+              if($_GET['pg']!='home'){
+            ?>
+                <div class="wr25 pr20">
+                    <div>
+                        <? include 'z_categorias.phtml' ?>
+                    </div>
+                </div>
+            <? } ?>
+
+			<div class="wr95_personalizado">
+				<? if($leiloes){ ?>
+					<ul>
+						<? $x=0?>
+						<? foreach ($leiloes as $key => $value) { ?>
+							<? $tipo_box = tipo_box($value)?>
+							<? if($tipo_box){ ?>
+								<li class="wr4_personalizado borda_leiloes LL_box_<?=$tipo_box?>">
+									<? include 'z_leilao.phtml' ?>
+								</li>
+								<?=clear($x, 3)?>
+								<? $x++; ?>
+							<? } ?>
+						<? } ?>
+						<li class="clear"></li>
+						
+						<?
+
+                        if(isset($_GET['morePage'])):
+                            $page = $_GET['morePage'] + 3;
+                            else:
+                            $page = 6;
+                        endif;
+
+                        ?>
+					</ul>
+                    <div class="texto_centralizado">
+
+                        <a href="<?=DIR?>/home/?morePage=<?php echo $page;?>" class="botao dib p10 pl30 pr30 fz14 fwb ttu cor_fff btn-mais-para back_<?=LARANJA?>" style="">Carregar Mais</a>
+
+                    </div>
+				<? } ?>
+			</div>
+			<div class="clear"></div>
+
+<br>
+<br>
+			<div class="wr3">
+				<h2 class="pb20 fz24 texto_laranja"><?=lang('Leilões finalizados')?> <span class="fz12 vam"></span> </h2>
+			</div>
+						<div class="clear"></div>
+
+            <div class="wr95_personalizado">
+                <?
+                if($leiloessf){ ?>
+                    <ul>
+                        <? $x=0?>
+                        <? foreach ($leiloessf as $key => $value) {
+                            $this->filtro = " WHERE leiloes = '".$value->id."' AND situacao = '0'";
+                            $lotest = $this->read('lotes');
+
+                            if(count($lotest) == 0):
+
+                                $this->filtro = " WHERE leiloes = '".$value->id."' AND situacao <> '0'";
+                                $lotestss = $this->read('lotes');
+                                $value->table = 'leiloes';
+                                ?>
+                                <li class="wr4_personalizado pb20 LL_box_leilao borda_leiloes">
+
+                                    <a href="/lotes/?&leiloes=<?=$value->id;?>&FIM_ls=2" class="posr db" style="max-width: 310px;min-height: 440px;margin: 20px auto;">
+
+                                        <div class="carregando_lote" style="display: none;"> <img src="<" class="dib w32 h32"> <span> <span class="porcentagem m0 p0"></span> Carregando... </span> </div>
+
+                                        <div class="">
+                                            <div class="wf6 p10 pr2 fz12 ttu texto_preto">
+                                                <div class="p8 pl10 pr10 limit LL_natureza texto_centralizado borda_arredondada" style="background: rgb(237, 237, 237);"><?=natureza_define($value);?></div>
+                                            </div>
+                                            <div class="wf6 p10 pl2 fz12 ttu tar texto_preto">
+                                                <div class="p8 pl10 pr10 texto_preto texto_italico limit LL_tipos"><?=tipo_define($value);?></div>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+
+                                        <div>
+                                            <div class="posr pl10 pr10">
+                                                <div class="posr h200 c_flex jc back_fff">
+                                                    <img src="/web/fotos/<?=$value->foto;?>" onerror="this.src='/web/img/outros/sem_img.jpg';" style="max-width: 300px; max-height: 200px;" class="db w100p m-a" title="FAST" alt="FAST" name="FAST">
+                                                </div>
+
+                                                <div class="pt10 z1 b0 l0 w100p">
+                                                    <div style="display: inline-block;width:33%;">
+                                                        <div class="dn p5 tac fz11 ts1 cor_fff back_1F369F LL_praca1">
+                                                            <span>1ª Praça</span>: <div class="dib dataini"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div style="display: inline-block;width:32%;">
+                                                        <div class="dn p5 tac fz11 ts1 cor_fff back_CB151A LL_praca2">
+                                                            2ª Praça: <span class="dataini"></span>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- <div style="display: inline-block;width:27%;">
+                                                         <ul class="LL_situacao p5 fz11 ts1 cor_fff borda_arredondada" situacao="arrematado">
+                                                             <li class="wf7 ttu"><p>Arrematado</p></li>
+                                                             <li class="wf5 pr5 tar ttu" style="display:none;">
+                                                                 <div class="dib" title="Visualização"><div class="dib w15"><i class="fa fa-eye"></i></div> <span class="LL_count">0</span></div> &nbsp;
+                                                                 <div class="dib" title="Lances"><div class="dib w15"><i class="fa fa-gavel"></i></div> <span class="LL_count_lances">0</span></div>
+                                                             </li>
+                                                             <li class="clear"></li>
+                                                         </ul>
+                                                     </div> -->
+                                                </div>
+
+
+
+                                            </div>
+
+                                            <ul class="p10">
+                                                <li class="limit fz16 texto_preto LL_nome texto_negrito"><?=$value->nome?></li>
+                                            </ul>
+
+                                            <ul class="p10 bdt_F0F0F0 back_fff">
+                                                <li class="texto_preto  fz11">
+
+                                                    <ul class="wr6">
+
+                                                        <li class="pt10 pb1">
+                                                            <div class="dib w14"><i class="icone_bandeira"></i></div>
+                                                            <div class="dib LL_codigo pl10"><?=$value->codigo;?></div>
+                                                        </li>
+
+                                                        <li class="pt10 LL_data_ini" style="">
+                                                            <div class="dib w12"><i class="icone_calendario"></i></div>
+                                                            <div class="dib vam texto_preto pl10 texto_negrito">Início:</div>
+                                                            <data class="dib"><?=date("d/m/Y", strtotime($value->data_ini))?></data>
+                                                        </li>
+                                                        <li class="pt10 LL_data_fim" style="">
+                                                            <div class="dib w12"><i class="icone_calendario"></i></div>
+                                                            <div class="dib vam texto_preto pl10 texto_negrito">Término:</div>
+                                                            <data class="dib"><?=date("d/m/Y", strtotime($value->data_fim))?></data>
+                                                        </li>
+                                                    </ul>
+
+
+                                                    <div class="wr6 pl10">
+
+
+                                                        <div class="pt15 dn LL_lance_ini">
+                                                            <div class="fwb">Lance inicial</div>
+                                                            <b class="fz16"></b>
+                                                        </div>
+                                                        <div class="pt10 dn LL_lance_min">
+                                                            <div class="fwb">Lance mínimo</div>
+                                                            <b class="fz16 cor_CB151A"></b>
+                                                        </div>
+                                                        <div class="pt35 pb35 fz20 tac ttu cor_FF8C00 dn LL_count_lotes" style="display: block;">
+                                                            <!--<b class="fwn"><?=count($lotestss);?></b> Lotes-->
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="clear"></div>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                    </a>
+
+                                </li>
+
+                            <? endif; } ?>
+                        <li class="clear"></li>
+
+                    </ul>
+                    <div class="texto_centralizado">
+                        <a href="<?=DIR?>/home/?morePageEnd=<?php echo $page;?>" class="botao dib p10 pl30 pr30 fz14 fwb ttu cor_fff btn-mais-para back_<?=LARANJA?>" style="">Carregar Mais</a>
+                    </div>
+                <? } ?>
+            </div>
+
+            <div class="clear"></div>
+
+		</div>
+
+		<? if($comitentes){ ?>
+			<div class="centerr">
+				
+		        <div class="clear"></div>
+			</div>
+			<div class="h40"></div>
+    	<? } ?>
+
+
+		<? if(isset($banner[3])){ ?>
+			<!--<div class="">
+				<div class="Plugin1 pagg1 Plugin_CSS_fundo_vermelho" itens="1" auto="10" altura_flexcivel="1">
+			    	<? foreach ($banner[3] as $key => $value) { ?>
+						<a <?=$value->link ? 'href="'.http($value->link).'"' : ''?> class="db">
+							<?=banner($value, 1900, 288, ' class="db w100p m-a" ')?>
+						</a>
+		        	<? } ?>
+				</div>
+		        <div class="clear"></div>
+	        </div>-->
+		<? } ?>
+
+	</section>
+
+
+<? $leiloes = array_merge($leiloes, $leiloes_star) ?>
+<?=leiloes($leiloes, $lotes_star)?>
