@@ -10,6 +10,9 @@
 			$return  = '<link rel="stylesheet" type="text/css" href="'.DIR.'/plugins/Fonts/Fonts_Fa/css/font-awesome.min.css" />'.$this->quebra;
 			$return .= '<link rel="stylesheet" type="text/css" href="'.DIR.'/plugins/Fonts/Fonts_Icon/simple-line-icons.css" />'.$this->quebra.$this->quebra;
 
+			//Fontawesome - adicionado - 21-11-2019
+            $return .= '<link rel="stylesheet" type="text/css" href="'.DIR.'/plugins/fontawesome-free/css/all.css" />'.$this->quebra.$this->quebra;
+
 			// Plugins
 			$return .= '<link rel="stylesheet" type="text/css" href="'.DIR.'/plugins/Jquery/Plugins/ImageLightBox/css/imagelightbox.css" />'.$this->quebra.$this->quebra;
 			$return .= '<link rel="stylesheet" type="text/css" href="'.DIR.'/plugins/Jquery/Plugins/LightSlider/css/lightslider.css" />'.$this->quebra;
