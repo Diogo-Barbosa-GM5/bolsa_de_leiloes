@@ -631,6 +631,7 @@
                              a.suites,
                              a.vagas,
                              a.area_privativa,
+                             a.desocupado as desocupado,
                              FORMAT(a.lance_ini,2,"de_DE") as lance_ini,
                              FORMAT(a.lances,2,"de_DE") as lance_recente,
                              a.foto,

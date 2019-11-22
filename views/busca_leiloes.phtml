@@ -845,6 +845,7 @@
                         let estados = leilao[index].estado_lote;
                         let cidades = leilao[index].cidade_lote;
                         let foto = leilao[index].foto;
+                        let desocupado = leilao[index].desocupado;
                         let lance_inicial = leilao[index].lance_ini;
                         let lance_recente = leilao[index].lance_recente;
                         let situacao = leilao[index].situacao;
@@ -915,6 +916,15 @@
                                 break;
                         }
 
+                        item_faixa_desocupado = '';
+                        if(desocupado == 1) {
+
+                            item_faixa_desocupado = '                                <div class="posa t5 l15 p5 z1 fz14 borda_arredondada fundo_roxo texto_branco texto_negrito">\n' +
+                                                    '                                    desoculpado' +
+                                                    '                                </div>\n';
+
+                        }
+
 
                         item += '<ul>\n' +
                             '\n' +
@@ -935,6 +945,7 @@
                             '\n' +
                             '                        <div>\n' +
                             '                            <div class="posr pl10 pr10">\n' +
+                             item_faixa_desocupado +
                             '                                <div class="posa t5 r15 z1 bd_ccc back_fff">\n' +
                             '                                    <img src="/web/fotos/' + foto_comitente + '" style="max-width: 70px; max-height: 70px;" class="db w100p m-a">\n' +
                             '                                </div>\n' +
@@ -972,22 +983,22 @@
                             '                                        <li class="pt10 icone_caracteristicas">\n' +
 
                             '                                           <div>\n' +
-                            '                                             <span class="icone_quarto" title="Quartos"></span>\n' +
+                            '                                             <span class="fas fa-bed" title="Quartos" style="font-size: 25px;font-weight: bold;"></span>\n' +
                             '                                             <span>' + dormitorios + '</span>\n' +
                             '                                           </div>\n' +
 
                             '                                           <div>\n' +
-                            '                                             <span class="icone_suite" title="Suítes"></span>\n' +
+                            '                                             <span class="fas fa-chess-queen" title="Suítes" style="font-size: 25px;font-weight: bold;"></span>\n' +
                             '                                             <span>' + suites + '</span>\n' +
                             '                                           </div>\n' +
 
                             '                                           <div>\n' +
-                            '                                             <span class="icone_vaga" title="Vagas"></span>\n' +
+                            '                                             <span class="fas fa-car" title="Vagas" style="font-size: 25px;font-weight: bold;"></span>\n' +
                             '                                             <span>' + vagas + '</span>\n' +
                             '                                           </div>\n' +
 
                             '                                           <div>\n' +
-                            '                                             <span class="icone_area" title="Área"></span>\n' +
+                            '                                             <span class="fas fa-vector-square" title="Área" style="font-size: 25px;font-weight: bold;"></span>\n' +
                             '                                             <span>' + area_privativa + ' m²</span>\n' +
                             '                                           </div>\n' +
 
