@@ -1,6 +1,6 @@
 <?
 	if($_GET['pg'] == 'home'){
-		$mysql->colunas = 'id, nome, foto, leiloes';
+		$mysql->colunas = 'id, nome, foto, leiloes, desocupado';
 		$mysql->filtro = " WHERE ".STATUS." AND leiloes = '".$value->id."' ORDER BY estados asc, ".ORDER." ";
 		$lotes = $mysql->read('lotes');
 
@@ -63,6 +63,11 @@
 
 		<div>
 			<div class="posr pl10 pr10">
+                <?php if($lotes[0]->desocupado == 1){ ?>
+                    <div class="posa t5 l15 p5 z1 fz14 borda_arredondada fundo_roxo texto_branco texto_negrito">
+                        desocupado
+                    </div>
+                <?php } ?>
 				<? if(isset($comitentes_foto->foto) AND $comitentes_foto->foto){ ?>
 					<div class="posa t5 r15 z1 bd_ccc back_fff">
 						<? $img->tags = ' class="db w100p m-a" ' ?>
