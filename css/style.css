@@ -513,8 +513,12 @@ body, textarea {
 .icone_caracteristicas span {
 	display: block;
 	text-align: center;
-	width: 64px;
+	width: 55px;
 	margin-top: 5px;
+}
+
+.icone_caracteristicas span.fas {
+	font-size: 23px;
 }
 
 .icone_quarto {

@@ -83,6 +83,8 @@ function informacoes($leiloes, $lotes, $value, $dados, $lote=0){
     $lotes_lances = $mysql->read('lotes_lances');
     $dados['count_lances'] += current($lotes_lances[0]);
 
+
+    $dados['banheiros'] = empty($value->banheiros) ? 0 : $value->banheiros; // Incluído por Diogo 22/11/2019
     $dados['area_privativa'] = $value->area_privativa; // Incluído por Diogo 12/09/2019
     $dados['quartos'] = empty($value->quartos) ? 0 : $value->quartos; // Incluído por Diogo 12/09/2019
     $dados['suites'] = empty($value->suites) ? 0 : $value->suites; // Incluído por Diogo 12/09/2019

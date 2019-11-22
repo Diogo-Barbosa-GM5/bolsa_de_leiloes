@@ -146,6 +146,7 @@
 					}
 
 					//Diogo teste de detalhes
+					$(".LL_box_"+$key+" .banheiros").html($val.banheiros);
 					$(".LL_box_"+$key+" .quartos").html($val.quartos);
 					$(".LL_box_"+$key+" .suites").html($val.suites);
 					$(".LL_box_"+$key+" .vagas").html($val.vagas);
