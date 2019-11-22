@@ -856,6 +856,7 @@
                         let dormitorios = leilao[index].quartos;
                         let suites = leilao[index].suites;
                         let vagas = leilao[index].vagas;
+                        let banheiros = leilao[index].banheiros;
                         let area_privativa = leilao[index].area_privativa;
                         let fase_da_obra = leilao[index].obra;
                         let data_ini_leilao = leilao[index].data_ini;
@@ -869,6 +870,9 @@
                             suites = 0;
                         }
 
+                        if (banheiros == null) {
+                            banheiros = 0;
+                        }
                         // indicando o natureza do leilão
                         let natureza_nome = '';
 
@@ -983,22 +987,27 @@
                             '                                        <li class="pt10 icone_caracteristicas">\n' +
 
                             '                                           <div>\n' +
-                            '                                             <span class="fas fa-bed" title="Quartos" style="font-size: 25px;font-weight: bold;"></span>\n' +
+                            '                                             <span class="fas fa-bath" title="banheiros"></span>\n' +
+                            '                                             <span>' + banheiros + '</span>\n' +
+                            '                                           </div>\n' +
+
+                            '                                           <div>\n' +
+                            '                                             <span class="fas fa-bed" title="Quartos"></span>\n' +
                             '                                             <span>' + dormitorios + '</span>\n' +
                             '                                           </div>\n' +
 
                             '                                           <div>\n' +
-                            '                                             <span class="fas fa-chess-queen" title="Suítes" style="font-size: 25px;font-weight: bold;"></span>\n' +
+                            '                                             <span class="fas fa-chess-queen" title="Suítes"></span>\n' +
                             '                                             <span>' + suites + '</span>\n' +
                             '                                           </div>\n' +
 
                             '                                           <div>\n' +
-                            '                                             <span class="fas fa-car" title="Vagas" style="font-size: 25px;font-weight: bold;"></span>\n' +
+                            '                                             <span class="fas fa-car" title="Vagas"></span>\n' +
                             '                                             <span>' + vagas + '</span>\n' +
                             '                                           </div>\n' +
 
                             '                                           <div>\n' +
-                            '                                             <span class="fas fa-vector-square" title="Área" style="font-size: 25px;font-weight: bold;"></span>\n' +
+                            '                                             <span class="fas fa-vector-square" title="Área"></span>\n' +
                             '                                             <span>' + area_privativa + ' m²</span>\n' +
                             '                                           </div>\n' +
 

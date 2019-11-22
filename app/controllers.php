@@ -630,6 +630,7 @@
                              a.quartos,
                              a.suites,
                              a.vagas,
+                             a.banheiros,
                              a.area_privativa,
                              a.desocupado as desocupado,
                              FORMAT(a.lance_ini,2,"de_DE") as lance_ini,
