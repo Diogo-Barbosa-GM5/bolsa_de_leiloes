@@ -27,9 +27,6 @@
 		}
 
 
-
-		.backk_footer { background-image: url('../web/img/footer/03.png'); background-position: center; .BACK_LARANJA; background-repeat: no-repeat; }
-
 		#faq {
 			.fa-plus { display: block; }
 			.fa-minus { display: none; }
@@ -41,12 +38,6 @@
 				.txt { display: block; }
 			}
 		}
-
-		.border_dashed_DD0000 { border: 1px dashed #DD0000; }
-
-
-		span.cat-j::before { content: "J"; height: 30px; line-height: 24px; font-size: 30px; font-weight: bold; display: block; margin-bottom: 4px; }
-		span.cat-e::before { content: "E"; height: 30px; line-height: 24px; font-size: 30px; font-weight: bold; display: block; margin-bottom: 4px; }
 	/* NOVO */
 
 
@@ -96,38 +87,7 @@
 			}
 		}
 
-		.pagamentos {
-			.credito {
-				.cartao {
-					.frente { background: url('../web/img/outros/pagamentos/PagSeguro/credito/padrao.png') no-repeat;
-						.valido_ate { position: absolute; bottom: 26px; left: 30px; text-transform: uppercase; width: 36px; text-align: right; font-size: 11px; }
-						.numero { position: absolute; left: 30px; bottom: 95px; font-size: 19px; }
-						.validade { position: absolute; bottom: 29px; left: 80px; font-size: 17px; }
-						.nome { overflow: hidden; width: 250px; font-size: 19px; text-overflow: ellipsis;white-space: nowrap; position: absolute; bottom: 62px; left: 30px; text-transform: uppercase; }
-					}
-					.verso { background: url('../web/img/outros/pagamentos/PagSeguro/credito/verso.png') no-repeat;
-						.cvv { position: absolute; top: 100px; left: 318px; color: #141414; text-shadow: none; webkit-transition: all 0.35s 0.45s ease-out; -moz-transition: all 0.35s 0.45s ease-out;-o-transition: all 0.35s 0.45s ease-out; -ms-transition: all 0.35s 0.45s ease-out; transition: all 0.35s 0.45s ease-out; }
-					}
-					.aura { background: url('../web/img/outros/pagamentos/PagSeguro/credito/aura-card-bg.png') no-repeat; }
-					.diners { background: url('../web/img/outros/pagamentos/PagSeguro/credito/diners-card-bg.png') no-repeat; }
-					.discover { background: url('../web/img/outros/pagamentos/PagSeguro/credito/discover-card-bg.png') no-repeat; }
-					.elo { background: url('../web/img/outros/pagamentos/PagSeguro/credito/elo-card-bg.png') no-repeat; }
-					.hipercard { background: url('../web/img/outros/pagamentos/PagSeguro/credito/hipercard-card-bg.png') no-repeat; }
-					.jcb { background: url('../web/img/outros/pagamentos/PagSeguro/credito/jcb-card-bg.png') no-repeat; }
-					.mastercard { background: url('../web/img/outros/pagamentos/PagSeguro/credito/mastercard-card-bg.png') no-repeat; }
-					.visa { background: url('../web/img/outros/pagamentos/PagSeguro/credito/visa-card-bg.png') no-repeat; }
-				}
-			}
-			.credito, .debito, .boleto {
-				button { width: 390px; height: 80px; font-size: 22px; color: #fff; cursor: pointer; vertical-align: middle; text-align: left; background-color: rgb(15, 107, 235); }
-			}
-
-		}
-
-
 	/* LOJA */
-
-
 
 
 	/* PLUGINS */
