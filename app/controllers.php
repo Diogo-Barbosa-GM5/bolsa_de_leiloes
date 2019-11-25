@@ -520,19 +520,46 @@
             //Situação do leilão
             $situacao = $_GET['situacao'];
 
+
             $situacao_sql = '';
-            $a = 0;
-            foreach($situacao as $valor) {
-                ++$a;
-                if($a <= 1) {
-                    $situacao_sql = "AND a.situacao in ('".$valor['value']."'";
-                }else{
-                    $situacao_sql .= ",'".$valor['value']."'";
+
+            foreach($situacao as $value) {
+
+                if(empty($situacao_sql) && $value != 1) {
+                    $situacao_sql = "AND a.situacao in ('".$value."'";
                 }
+
+                if(!empty($situacao_sql) && $value != 1) {
+                     $situacao_sql .= ",'" . $value . "'";
+                }
+
+
             }
 
             empty($situacao_sql)?'':($situacao_sql.=') ');
+
+
+            // Neste foreach faço a pesquisa por leiloes em loteamento
+            foreach($situacao as $value) {
+
+                //em loteamento -  1 (um) seria em loteamento mas não há um código para isso
+                //logo é preciso fazer uma verificação nas datas
+                if($value == 1 ) {
+
+                    // removo o AND e adiciono ao $situacao_em_loteamento
+                    if(!empty($situacao_sql)) {
+                        $situacao_sql = str_replace('AND', 'or', $situacao_sql);
+                    }
+
+                    $situacao_em_loteamento = " AND ( (a.data_ini > NOW()) or ( a.data_ini < NOW() and a.data_ini1 > NOW()) ".$situacao_sql." ) ";
+
+                    $situacao_sql = $situacao_em_loteamento;
+                }
+
+            }
+
             //Fim Situação do leilão
+
 
             //natureza do leilão
             $natureza = $_GET['natureza'];
@@ -662,11 +689,14 @@
                              '.$comitente_sql.'                      
                     ORDER BY FIELD(situacao_ordem,0,1,3,10,2) '.$ordenacao_order;
 
+
             $resultado = $this->db->query($query);
             $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
-            return print_r(json_encode($lista, JSON_UNESCAPED_UNICODE));
-            //return print_r(json_encode(array('sql'=>$situacao_sql), JSON_UNESCAPED_UNICODE));
+           // print_r($query);
+
+           return print_r(json_encode($lista, JSON_UNESCAPED_UNICODE));
+           //return print_r(json_encode(array('sql'=>$situacao_sql), JSON_UNESCAPED_UNICODE));
 
         }
 
