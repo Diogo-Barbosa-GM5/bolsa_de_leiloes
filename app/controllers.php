@@ -521,6 +521,7 @@
             $situacao = $_GET['situacao'];
 
 
+            $situacao_em_loteamento = '';
             $situacao_sql = '';
 
             foreach($situacao as $value) {
@@ -556,6 +557,11 @@
                     $situacao_sql = $situacao_em_loteamento;
                 }
 
+            }
+
+            //se situacao
+            if(empty($situacao_em_loteamento) and isset($situacao)) {
+                $situacao_sql .= " AND ( (a.data_ini <= NOW()) or ( a.data_fim < NOW()  and a.data_ini1 <= NOW() and a.data_fim1 >= NOW() ) )";
             }
 
             //Fim Situação do leilão
@@ -693,7 +699,7 @@
             $resultado = $this->db->query($query);
             $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
-           // print_r($query);
+          // print_r($query);
 
            return print_r(json_encode($lista, JSON_UNESCAPED_UNICODE));
            //return print_r(json_encode(array('sql'=>$situacao_sql), JSON_UNESCAPED_UNICODE));
