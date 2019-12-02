@@ -10,6 +10,7 @@
 		}
 	}
 
+
 	// comitentes
 		if(isset($value->comitentes)){
 			$ex_comitentes = ex($value->comitentes);
@@ -62,7 +63,15 @@
 
 		<div>
 			<div class="posr pl10 pr10">
-                <?php if($lotes[0]->desocupado == 1){ ?>
+
+
+                <?php
+                   // Verificando se lote está desocupado
+                    $mysql->colunas = 'id, nome, desocupado';
+                    $mysql->filtro = " WHERE id = ".$value->id;
+                    $lote_desocupado = $mysql->read('lotes');
+
+                    if($lote_desocupado[0]->desocupado == 1){ ?>
                     <div class="posa t5 l15 p5 z1 fz14 borda_arredondada fundo_roxo texto_branco texto_negrito">
                         desocupado
                     </div>
